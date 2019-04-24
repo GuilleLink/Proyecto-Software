@@ -1,14 +1,43 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-button Href="/login" size="small" color="light" shape="round" slot="end">
+      <ion-title color="primary">Cerrar Sesión </ion-title>   
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+<ion-content padding>
+
+  <ion-item-divider>
+    <ion-label>
+        <ion-icon name="contact"></ion-icon>
+    </ion-label>
+    <ion-label>
+      <h2>{{ emailUser }}</h2>
+      <h3>Bienvenido</h3>
+    </ion-label>
+  </ion-item-divider>
+  <br>
+
+  <ion-item>
+    <ion-label>Idioma</ion-label>
+    <ion-select value="español" okText="Ok" cancelText="Cancelar">
+      <ion-select-option value="español">Español</ion-select-option>
+      <ion-select-option value="kaqchikel">Kaqchikel</ion-select-option>
+      <ion-select-option value="k'iche'">K’iche’</ion-select-option>
+      <ion-select-option value="mam">Mam</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <br>
+
+  <ion-item>
+      <ion-label>Modo Narracion</ion-label>
+      <ion-label><ion-icon name="volume-high" size="large"></ion-icon></ion-label>
+      <ion-checkbox color="primary"></ion-checkbox>
+  </ion-item>
+
+
+
+
 </ion-content>
