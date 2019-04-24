@@ -5,6 +5,15 @@
 export const environment = {
   production: false
 };
+export const firebaseConfig = {
+  
+  apiKey: "AIzaSyA_cdDzzkUNw7wwT8hYAq-BVlkygBf0VF4",
+  authDomain: "votoelectronico-43726.firebaseapp.com",
+  databaseURL: "https://votoelectronico-43726.firebaseio.com",
+  projectId: "votoelectronico-43726",
+  storageBucket: "votoelectronico-43726.appspot.com",
+  messagingSenderId: "922180555198"
+};
 
 /*
  * For easier debugging in development mode, you can import the following file
