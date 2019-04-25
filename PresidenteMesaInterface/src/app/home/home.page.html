@@ -32,12 +32,15 @@
   <br>
 
   <ion-item>
-      <ion-label>Modo Narracion</ion-label>
+      <ion-label>Modo Narración</ion-label>
       <ion-label><ion-icon name="volume-high" size="large"></ion-icon></ion-label>
       <ion-checkbox color="primary"></ion-checkbox>
   </ion-item>
+  
+  <br>
 
-
-
-
+  <ion-item>
+    <ion-label>Habilitar Voto</ion-label>
+    <ion-toggle [disabled]='false' [(ngModel)]="toggleValue" (ionChange)="presentAlert()"></ion-toggle>
+  </ion-item>
 </ion-content>
