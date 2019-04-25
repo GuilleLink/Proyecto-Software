@@ -1,15 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {AlertController} from '@ionic/angular';
 import {ActionSheetController} from '@ionic/angular';
+import {TaskI} from '../models/task.interface';
+import { InfoService } from '../services/info.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
-  constructor(private alertController: AlertController, private actionSheet: ActionSheetController){
+export class HomePage implements OnInit{
+  candidatos: TaskI[];
+  constructor(private alertController: AlertController, private actionSheet: ActionSheetController,private infoService: InfoService){
 
+  }
+  
+  ngOnInit(){
+    this.infoService.getCandidatos().subscribe((res)=> {
+      console.log('Candidatos',res);
+      this.candidatos = res;
+    });
   }
 
   async presentAlert(){

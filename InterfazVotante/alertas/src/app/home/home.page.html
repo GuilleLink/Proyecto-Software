@@ -5,7 +5,19 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
+<ion-content class="card-background-page"> 
+  <ion-grid>
+    <ion-row >
+      <ion-col *ngFor = "let candidato of candidatos" size="6">
+          <ion-card >
+              <img class="foto" src="{{candidato.URL}}"/>
+              <div class="card-title">{{candidato.presidente}}</div>
+              <div class="card-subtitle">{{candidato.partido}}</div>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
 <ion-content>
   <ion-button (click)="presentAlert()">Alert Action
   </ion-button>
