@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {AlertController} from '@ionic/angular';
+import {ActionSheetController} from '@ionic/angular';
+import {TaskI} from '../models/task.interface';
+import { InfoService } from '../services/info.service';
 
 @Component({
   selector: 'app-alcaldes',
@@ -6,10 +10,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./alcaldes.page.scss'],
 })
 export class AlcaldesPage implements OnInit {
-
-  constructor() { }
+  alcaldes: TaskI[];
+  constructor(private infoService: InfoService) { }
 
   ngOnInit() {
+    this.infoService.getAlcaldes().subscribe((res)=> {
+      console.log('Alcaldes',res);
+      this.alcaldes = res;
+    });
   }
 
 }

@@ -1,9 +1,20 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>alcaldes</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Interfaz Alcalde
+    </ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+<ion-content class="card-background-page"> 
+  <ion-grid>
+    <ion-row >
+      <ion-col *ngFor = "let alcalde of alcaldes" size="6">
+          <ion-card >
+              <img class="foto" src="{{alcalde.URL}}"/>
+              <div class="card-title"><h2>{{alcalde.alcalde}}</h2></div>
+              <div class="card-subtitle"><h3>{{alcalde.partido}}</h3></div>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

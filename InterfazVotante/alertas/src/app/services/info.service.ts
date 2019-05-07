@@ -10,10 +10,22 @@ import {TaskI} from '../models/task.interface';
 export class InfoService {
   private candidatosCollection: AngularFirestoreCollection<TaskI>;
   private candidatos: Observable<TaskI[]>;
+  private alcaldesCollection: AngularFirestoreCollection<TaskI>;
+  private alcaldes: Observable<TaskI[]>;
 
   constructor(db: AngularFirestore) { 
     this.candidatosCollection = db.collection<TaskI>('candidatos');
     this.candidatos = this.candidatosCollection.snapshotChanges().pipe(
+      map(actions =>{
+        return actions.map(a =>{
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return {id, ...data};
+        });
+      })
+    );
+    this.alcaldesCollection = db.collection<TaskI>('alcaldes');
+    this.alcaldes = this.alcaldesCollection.snapshotChanges().pipe(
       map(actions =>{
         return actions.map(a =>{
           const data = a.payload.doc.data();
@@ -28,6 +40,12 @@ export class InfoService {
   }
   getCandidato(id: string){
     return this.candidatosCollection.doc<TaskI>(id).valueChanges();
+  }
+  getAlcaldes(){
+    return this.alcaldes;
+  }
+  getAlcalde(id: string){
+    return this.alcaldesCollection.doc<TaskI>(id).valueChanges();
   }
 
 }
