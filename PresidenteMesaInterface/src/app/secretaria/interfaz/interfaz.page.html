@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary"></ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-item-divider>
+    <ion-label>
+        <ion-icon name="contact"></ion-icon>
+    </ion-label>
+    <ion-label>
+      <h2>Secretaria</h2>
+    </ion-label>
+  </ion-item-divider>
+    <ion-label>DPI del votante:</ion-label>
+    <ion-input></ion-input>
+      <ion-button fill="solid" shape="round" expand="block" (click)="alerta1()" >Verificar</ion-button> 
+  <ion-item>  
+    <ion-label position="stacked">El nombre del votantes es:</ion-label>
+    <ion-textarea
+      disabled
+      readonly
+      value="">
+    </ion-textarea>
+  </ion-item>
+</ion-content>
