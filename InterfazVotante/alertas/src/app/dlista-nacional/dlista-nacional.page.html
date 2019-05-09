@@ -10,5 +10,17 @@
     <ion-progress-bar color = "primary" value = "0.2" buffer="0.40"></ion-progress-bar>
     <br>
   </div>
-
+  <ion-grid>
+    <ion-row >
+      <ion-col *ngFor = "let candidato of candidatos" size="6">
+          <ion-card >
+              <img class="foto" src="{{candidato.URL}}"/>
+              <div class="card-title"><h2>{{candidato.presidente}}</h2></div>
+              <div class="card-subtitle"><h3>{{candidato.partido}}</h3></div>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-button (click)="presentAlert()">Continuar
+  </ion-button>
 </ion-content>
