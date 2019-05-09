@@ -6,6 +6,11 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="card-background-page"> 
+  <div class = "ion-padding">
+      <p>Barra de progreso</p>
+      <ion-progress-bar color = "primary" value = "0.6" buffer="0.80"></ion-progress-bar>
+      <br>
+  </div>
   <ion-grid>
     <ion-row >
       <ion-col *ngFor = "let alcalde of alcaldes" size="6">

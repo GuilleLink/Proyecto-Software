@@ -5,7 +5,14 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content class="card-background-page"> 
+  <div class = "ion-padding">
+    <p>Barra de progreso</p>
+    <ion-progress-bar color = "primary" value = "0.0" buffer="0.20"></ion-progress-bar>
+    <br>
+  </div>
+
   <ion-grid>
     <ion-row >
       <ion-col *ngFor = "let candidato of candidatos" size="6">
