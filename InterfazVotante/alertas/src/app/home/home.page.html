@@ -8,11 +8,304 @@
 <ion-content class="card-background-page"> 
   <ion-grid>
     <ion-row >
-      <ion-col *ngFor = "let candidato of candidatos" size="6">
-          <ion-card >
-              <img class="foto" src="{{candidato.URL}}"/>
-              <div class="card-title"><h2>{{candidato.presidente}}</h2></div>
-              <div class="card-subtitle"><h3>{{candidato.partido}}</h3></div>
+      <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[0].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[0].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[0].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+
+        <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[1].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[1].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[1].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+
+            <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[2].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[2].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[2].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+    <!--Acá empieza el segundo de la fila-->
+
+    <ion-row >
+      <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[3].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[3].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[3].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+
+        <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[4].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[4].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[4].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+
+            <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[5].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[5].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[5].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+    <!--Acá empieza la tercer columna-->
+    <ion-row >
+      <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[6].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[6].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[6].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+
+        <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[7].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[7].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[7].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+
+            <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[8].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[8].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[8].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+    <!--Acá empieza la cuarta fila-->
+    <ion-row >
+      <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[9].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[9].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[9].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+
+        <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[10].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[10].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[10].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+
+            <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[11].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[11].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[11].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+    <!--Quinta fila-->
+    <ion-row >
+      <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[12].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[12].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[12].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+
+        <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[13].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[13].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[13].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+
+            <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[14].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[14].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[14].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+    <!--Sexta fila-->
+    <ion-row >
+      <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[15].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[15].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[15].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+
+        <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[16].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[16].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[16].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+
+            <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[17].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[17].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[17].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+    <!--Séptima fila-->
+    <ion-row >
+      <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[18].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[18].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[18].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+
+        <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[19].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[19].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[19].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+
+            <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[20].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[20].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[20].partido}}</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+    <!--Octava Fila-->
+    <ion-row >
+      <ion-col size="4"  >
+          <ion-card mode="md">
+            <br>
+              <ion-item>
+                 <ion-img src="{{candidatos[21].URL}}"></ion-img>
+              </ion-item>
+              <ion-card-header class="center">
+                 <ion-card-title>{{candidatos[21].presidente}}</ion-card-title>
+              <ion-card-subtitle>{{candidatos[21].partido}}</ion-card-subtitle>
+              </ion-card-header>
           </ion-card>
       </ion-col>
     </ion-row>
