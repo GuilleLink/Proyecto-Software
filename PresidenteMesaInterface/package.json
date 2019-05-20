@@ -26,9 +26,11 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.1.0",
     "@ionic/pro": "2.0.4",
+    "async": "^2.6.2",
     "core-js": "^2.5.4",
     "firebase": "^5.10.0",
     "rxjs": "~6.4.0",
+    "tedious": "^5.0.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.29"
   },
