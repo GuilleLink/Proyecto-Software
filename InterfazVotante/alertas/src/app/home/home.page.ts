@@ -4,8 +4,6 @@ import {ActionSheetController} from '@ionic/angular';
 import {TaskI} from '../models/task.interface';
 import { InfoService } from '../services/info.service';
 
-import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -13,14 +11,10 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit{
   candidatos: TaskI[];
-  constructor(private alertController: AlertController, private actionSheet: ActionSheetController,private infoService: InfoService, private router: Router){
+  constructor(private alertController: AlertController, private actionSheet: ActionSheetController,private infoService: InfoService){
 
   }
   
-  go(){
-    this.router.navigate(['dlista-nacional'])
-  }
-
   ngOnInit(){
     this.infoService.getCandidatos().subscribe((res)=> {
       console.log('Candidatos',res);
@@ -44,7 +38,7 @@ export class HomePage implements OnInit{
             text: 'Continuar',
             cssClass: 'secondary',
             handler: () => {
-              console.log('Second Handler'), this.go();
+              console.log('Second Handler');
             } 
           }
             
