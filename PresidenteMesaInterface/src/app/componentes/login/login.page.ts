@@ -21,10 +21,7 @@ export class LoginPage implements OnInit {
     
     ) { }
 
-  pushHome(){
-    this.router.navigate(['/home',this.email]);
-    //this.router.navigate('/second/${ this.Value }');
-  }
+  
 
   ngOnInit() {
   }
@@ -32,7 +29,7 @@ export class LoginPage implements OnInit {
   OnSubmitLogin()
   {
    this.authService.login(this.email, this.password).then( res => {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home',this.email]);
    }).catch(err => alert('Los datos son incorrectos o no existe el usuario'))
   }
 

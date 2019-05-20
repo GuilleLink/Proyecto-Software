@@ -36,13 +36,44 @@ connection.on('connect', function(err)
         {
             //queryDatabase_Test()
             CheckEmpadronamiento(123);   //metodo que chequea
-            console.log(DBresults["columname"]);
-            console.log(DBresults["colvalue"]); //Aqui deberia de imprimirse los arrays con los datos pero no se imprimen.
+            //queryDatabase_Test();
+            //console.log(DBresults["columname"]);
+           // console.log(DBresults["colvalue"]); //Aqui deberia de imprimirse los arrays con los datos pero no se imprimen.
 
         }
     }
 );
 
+function CheckEmpadronamiento(dpi)
+{
+    console.log('Reading rows from the Table...');
+
+    // Read all rows from table
+    var request = new Request(
+        "SELECT * FROM padronE WHERE dpi ="+dpi,
+        function(err, rowCount, rows)
+        {
+            console.log(rowCount + ' row(s) returned');
+            process.exit();
+        }
+    );
+
+    //cuando la funcion termina, sus datos tambien se van a ala baby al parecer aunque se hayan guardado en un array
+    request.on('row', function(columns) {
+        columns.forEach(function(column) {
+            DBresults["columname"].push(String(column.metadata.colName)); //deberian guardarse los datos con el push
+            DBresults["colvalue"].push(String(column.value));
+            //console.log("%s: %s", column.metadata.colName, column.value);
+        });
+        console.log(DBresults["columname"]); //aqui si imprime
+        console.log(DBresults["colvalue"]);        
+        //DBresults["columname"] = names;
+        //DBresults["colvalue"] = values;
+    });
+   // console.log(DBresults["columname"]); //aqui ya no
+    //console.log(DBresults["colvalue"]);  
+    connection.execSql(request);
+}
 
 function queryDatabase_Test()
 {
@@ -76,33 +107,3 @@ var Objectt = function() {
         columname = [],
         colvalue= []}}
 
-function CheckEmpadronamiento(dpi)
-{
-    console.log('Reading rows from the Table...');
-
-    // Read all rows from table
-    var request = new Request(
-        "SELECT * FROM padronE WHERE dpi ="+dpi,
-        function(err, rowCount, rows)
-        {
-            console.log(rowCount + ' row(s) returned');
-            process.exit();
-        }
-    );
-
-    //cuando la funcion termina, sus datos tambien se van a ala baby al parecer aunque se hayan guardado en un array
-    request.on('row', function(columns) {
-        columns.forEach(function(column) {
-            DBresults["columname"].push(String(column.metadata.colName)); //deberian guardarse los datos con el push
-            DBresults["colvalue"].push(String(column.value));
-            //console.log("%s: %s", column.metadata.colName, column.value);
-        });
-        console.log(DBresults["columname"]); //aqui si imprime
-        console.log(DBresults["colvalue"]);        
-        //DBresults["columname"] = names;
-        //DBresults["colvalue"] = values;
-    });
-    console.log(DBresults["columname"]); //aqui ya no
-    console.log(DBresults["colvalue"]);  
-    connection.execSql(request);
-}
