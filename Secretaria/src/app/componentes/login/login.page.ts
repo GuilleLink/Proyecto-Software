@@ -19,7 +19,7 @@ export class LoginPage implements OnInit {
 
   OnSubmitLogin(){
     this.authService.login(this.email, this.password).then( res => {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home']); 
     }).catch(err => alert('los datos son incorrectos o no existe el usuario'));
   }
 

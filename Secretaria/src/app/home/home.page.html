@@ -1,28 +1,37 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title text-center>Inicio</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-title text-center>Inicio Secretaria de Mesa</ion-title>
+    </ion-toolbar>
 
 </ion-header>
 
 <ion-content padding>
-  <ion-item-divider>
+    <ion-item-divider>
         <ion-icon name="contact"></ion-icon>
-    <ion-label>
-      <h2>Secretaria</h2>
-    </ion-label>
-  </ion-item-divider>
-  <ion-item>
+        <ion-label>
+            <h2>Secretaria</h2>
+        </ion-label>
+    </ion-item-divider>
+
     <br>
     <br>
-    <ion-label position="floating">DPI del votante</ion-label>
-    <ion-input type="text"></ion-input>
-  </ion-item>
-      <ion-button fill="solid" shape="round" (click)="alerta1()" >Verificar</ion-button> 
-  <ion-item>  
-    <ion-label position="stacked">El nombre del votante es:</ion-label>
-    <ion-textarea disabled
-    readonly
-    value="">
-    </ion-textarea>
-  </ion-item>
+    <ion-item>
+        <ion-text color="dark">
+            <h5>Instrucciones Generales</h5>
+            <h6>Ingrese el DPI en la linea de abajo y luego presione VERIFICAR.</h6>
+        </ion-text>
+        <br>
+        <ion-label position="stacked">DPI Votante
+            <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input></ion-input>
+
+    </ion-item>
+    <br>
+    <br>
+
+    <ion-button shape="round" expand="block" fill="solid" [routerLink]="['/informacion']" routerLinkActive="router-link-active">
+        VERIFICAR
+    </ion-button>
+
+</ion-content>
