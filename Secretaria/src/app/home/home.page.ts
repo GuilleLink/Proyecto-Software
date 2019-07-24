@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { AuthService } from '../servicios/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,14 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(private alertController: AlertController) {}
+  constructor(private alertController: AlertController, public authservice: AuthService) {}
 
   ngOnInit() {}
+
+
+  Onlogout(){
+    this.authservice.logout();
+  }
 
   async alerta1() {
     const alert = await this.alertController.create({
