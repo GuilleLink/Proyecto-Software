@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-title text-center>Secretaria </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content padding> 
+  <img class="icon" src="assets/icon/Logo-elecciones-2015-.jpg">
+<ion-item>
+  <br>
+  <br>
+  <ion-label position="floating"> Correo Electrónico</ion-label>
+  <br>
+  <br>
+  <ion-input type="text" [(ngModel)]="email" name="email"></ion-input>
+</ion-item>
+<ion-item>
+    <br>
+    <br>
+  <ion-label position="floating"> Contraseña</ion-label>
+  <br>
+  <br>
+  <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
+</ion-item>
+<br>
+<ion-button (click)="OnSubmitLogin()" expand ="block"> Ingresar </ion-button> 
+
+</ion-content>
