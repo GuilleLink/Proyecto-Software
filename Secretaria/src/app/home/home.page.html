@@ -1,14 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title text-center>Inicio</ion-title>
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
-</ion-content>
+<ion-content padding>
+  <ion-item-divider>
+        <ion-icon name="contact"></ion-icon>
+    <ion-label>
+      <h2>Secretaria</h2>
+    </ion-label>
+  </ion-item-divider>
+  <ion-item>
+    <br>
+    <br>
+    <ion-label position="floating">DPI del votante</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+      <ion-button fill="solid" shape="round" (click)="alerta1()" >Verificar</ion-button> 
+  <ion-item>  
+    <ion-label position="stacked">El nombre del votante es:</ion-label>
+    <ion-textarea disabled
+    readonly
+    value="">
+    </ion-textarea>
+  </ion-item>
