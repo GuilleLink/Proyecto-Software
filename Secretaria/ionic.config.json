@@ -1,5 +1,7 @@
 {
   "name": "Secretaria",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
