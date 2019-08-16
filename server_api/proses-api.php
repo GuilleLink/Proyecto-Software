@@ -80,21 +80,18 @@
   
   //LOGIN EDITADO---------------------------------------------------------------------------------------------------------
   elseif($postjson['aksi']=="login"){
-    print_r($postjson);
-    $password = md5($postjson['password']);
+    $password = $postjson['password'];
+    $Nombre= $postjson['Nombre'];
     $query = mysqli_query($mysqli, 
-    "SELECT * 
-     FROM Secretaria 
-     WHERE Clave='$password' AND Nombre ='$postjson[Nombre]' 
-    ");
+    "SELECT * FROM Secretaria WHERE Clave='$password' AND Nombre='$Nombre'");
     $check = mysqli_num_rows($query);
 
     if($check>0){
       $data = mysqli_fetch_array($query);
       $datauser = array(
-        'ID_secretaria' => $data['ID_secretaria'],
+        'ID_secretaria' => $data['Id_Secretaria'],
         'Nombre' => $data['Nombre'],
-        'Clave' => $data['password']
+        'Clave' => $data['Clave']
       );
 
       $result = json_encode(array('success'=>true, 'result'=>$datauser));  
