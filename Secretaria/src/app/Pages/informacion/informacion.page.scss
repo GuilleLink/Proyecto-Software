@@ -1,14 +1,15 @@
-.no{
+.no {
     --background: #ff0000;
     &::after {
         content: "NO";
+        margin-right: 50%;
     }
 }
 
-
-.si{
+.si {
     --background: #33cc33;
     &::after {
         content: "SÍ";
+        margin-right: 50%;
     }
 }
