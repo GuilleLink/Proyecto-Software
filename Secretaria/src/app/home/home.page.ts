@@ -12,7 +12,7 @@ export class HomePage {
 
   ngOnInit() {}
 
-  async alerta1() {
+  /*async alerta1() {
     const alert = await this.alertController.create({
       header: 'Informacion votante',
       //message: 'Esta persona si está empadronada. - holaaa',
@@ -27,5 +27,7 @@ export class HomePage {
       buttons: ['Aceptar']
     });
     await alert.present();
-  }
+  }*/
+
+  
 }

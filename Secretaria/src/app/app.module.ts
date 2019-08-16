@@ -17,7 +17,9 @@ import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 import { initializeApp } from 'firebase';
 
 import {HttpModule} from '@angular/http';
-import { PostProvider } from './../Providers/post-provider';
+import { PostProvider } from '../providers/post-provider';
+
+import { IonicStorageModule } from '@ionic/Storage';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +27,7 @@ import { PostProvider } from './../Providers/post-provider';
   imports: [
     BrowserModule, 
     HttpModule, //MySQL
+    IonicStorageModule.forRoot(), //MySQL
     IonicModule.forRoot(), 
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),

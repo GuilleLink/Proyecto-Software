@@ -1,24 +1,23 @@
-import {Injectable } from '@angular/core';
-import {Http,Headers,RequestOptions} from '@angular/http';
-//import 'rxjs/add/operator/map';
-import { map} from 'rxjs/operators';
-//import 'rxjs/Rx';
+import { Injectable } from '@angular/core';
+import { Http, Headers, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Injectable()
-export class PostProvider{
-    server: string = "http://localhost/Secretaria/server_api/*" //min 22:00 ATENCION PUTEDE AVER PROBLEMA POR localhost
+export class PostProvider {
+	//server: string = "http://localhost/SprintIITest/IONIC4_CRUD_LOGINREGIS_PHP_MYSQL/server_api/"; // default
+	// if you test in real device "http://localhost" change use the your IP	
+	server: string = "http://localhost/SprintII_Software_/server_api/";   
 
-    constructor(public http: Http){
+	constructor(public http : Http) {
 
-    }
+	}
 
-    postData(body,file){
-        let type = "application/json; charset=UTF-8";
-        let headers = new Headers({'Content-Type': type});
-        let options = new RequestOptions({headers: headers});
+	postData(body, file){ 
+		let type = "application/json; charset=UTF-8";
+		let headers = new Headers({ 'Content-Type': type });
+		let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.server + file, JSON.stringify(body), options)
-        .pipe(map(res => res.json())); //Problem fixed with pipe. From: https://stackoverflow.com/questions/37208801/property-map-does-not-exist-on-type-observableresponse
-    }
+		return this.http.post(this.server + file, JSON.stringify(body), options)
+		.map(res => res.json());  
+	}
 }
-
