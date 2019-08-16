@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -12,15 +13,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { firebaseConfig } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
+
 import { initializeApp } from 'firebase';
+
+import {HttpModule} from '@angular/http';
+import { PostProvider } from './../Providers/post-provider';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,AngularFireModule.initializeApp(firebaseConfig),
-     AngularFireAuthModule],
+  imports: [
+    BrowserModule, 
+    HttpModule, //MySQL
+    IonicModule.forRoot(), 
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule],
   providers: [
     StatusBar,
+    PostProvider, //MySQL
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

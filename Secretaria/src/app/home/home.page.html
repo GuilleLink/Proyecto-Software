@@ -7,24 +7,27 @@
 
 <ion-content padding>
     <ion-item-divider>
-        <ion-icon name="contact"> <img class="icon" src="assets\images\secretaria.jpg"></ion-icon>
+        <ion-icon name="contact"></ion-icon>
         <ion-label>
-            <h2>Alexandra Gómez</h2>
-            <h2>aleG@gmail.com</h2>
+            <h2>Secretaria</h2>
         </ion-label>
     </ion-item-divider>
 
     <br>
     <br>
-    <ion-text color="dark" position="center">
-        <h5>Instrucciones Generales</h5>
-        <h6>Ingrese el DPI en la linea de abajo y luego presione VERIFICAR.</h6>
-    </ion-text>
-    <br>
-    <br>
     <ion-item>
-        <ion-input clear-input="true" inputmode="numeric" placeholder="Ingrese DPI acá..." required="true" spellcheck="true"></ion-input>
+        <ion-text color="dark">
+            <h5>Instrucciones Generales</h5>
+            <h6>Ingrese el DPI en la linea de abajo y luego presione VERIFICAR.</h6>
+        </ion-text>
+        <br>
+        <ion-label position="stacked">DPI Votante
+            <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input></ion-input>
+
     </ion-item>
+    <br>
     <br>
 
     <ion-button shape="round" expand="block" fill="solid" [routerLink]="['/informacion']" routerLinkActive="router-link-active">
