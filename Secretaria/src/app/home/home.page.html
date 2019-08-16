@@ -26,24 +26,20 @@
             </ion-text>
             <ion-label position="stacked">DPI Votante
                 <ion-text color="danger">*</ion-text>
-                <br>
             </ion-label>
-            <br>
+            <ion-input type="text" [(ngModel)]="DPI"></ion-input>
+            <!--<br>
             <input id="amountinput" type="text" pattern="[0-9]*" decimal="true" minlength="13" maxlength="13" button-char=" " #amount/>
             <br>
-            <br>
+            <br>-->
         </div>
     </ion-item>
     <br>
     <br>
-    <div class="ion-button-Verify">
-        <ion-button shape="round" expand="block" [routerLink]="['/informacion']" routerLinkActive="router-link-active">
+    <div class="ion-button-Verify" *ngFor="let votante of votantes">
+        <ion-button shape="round" expand="block" (click)="LoadCustomer(informacion.DPI,informacion.Nombre,informacion.Empadronado,informacion.Mesa,informacion.Centro)" routerLinkActive="router-link-active">
             VERIFICAR
         </ion-button>
     </div>
-
-    <ion-virtual-scroll (ionInfini)>
-
-    </ion-virtual-scroll>
 
 </ion-content>

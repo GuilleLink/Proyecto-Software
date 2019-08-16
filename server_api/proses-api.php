@@ -52,32 +52,37 @@
   }
   //DATOS DE VOTANTE EDITADO---------------------------------------------------------------------------------------------------------
   elseif($postjson['aksi']=='getdata'){
-  	$data = array();
     $query = mysqli_query($mysqli, 
-    "SELECT * 
-    FROM Votante
-    WHERE DPI =''
-    DESC LIMIT $postjson[start],$postjson[limit]");
+    "SELECT v.DPI AS DPI, v.Nombre as Nombre, m.Codigo_mesa AS Mesa, c.ID_centro AS Centro
+     FROM Votante v
+     INNER JOIN Mesa m ON v.Codigo_mesa = m.Codigo_mesa
+     INNER JOIN Centro c on m.ID_centro = c.ID_centro
+     WHERE v.DPI ='$postjson[DPI]'
+    ");
 
-  	while($row = mysqli_fetch_array($query)){
+  	$check = mysqli_num_rows($query);
 
-  		$data[] = array(
-  			'customer_id' => $row['customer_id'],
-  			'name_customer' => $row['name_customer'],
-  			'desc_customer' => $row['desc_customer'],
-  			'created_at' => $row['created_at'],
+    if($check>0){
+      $data = mysqli_fetch_array($query);
+      $datauser = array(
+        'DPI' => $data['DPI'],
+        'Nombre' => $data['Nombre'],
+        'Clave' => $data['Clave'],
+        'Mesa' => $data['Mesa'],
+        'Centro' => $data['Centro'],
+      );
 
-  		);
-  	}
+      $result = json_encode(array('success'=>true, 'result'=>$datauser));  
 
-  	if($query) $result = json_encode(array('success'=>true, 'result'=>$data));
-  	else $result = json_encode(array('success'=>false));
-
-  	echo $result;
+    }else{
+      $result = json_encode(array('success'=>false, 'msg'=>'Unregister Account'));
+      
+    }
+    echo $result;
 
   }
   //-----------------------------------------------------------------------------------------------------------------------------------
-  
+
   //LOGIN EDITADO---------------------------------------------------------------------------------------------------------
   elseif($postjson['aksi']=="login"){
     print_r($postjson);

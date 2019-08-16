@@ -41,7 +41,7 @@ export class LoginPage implements OnInit {
 
       this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{ //Llamada del metodo postData en post-provider, recibe como parametros
                                                                               //El cuerpo con los datos de la tabla a consultar y el nombre de 
-                                                                              //proses-api.php donde se realizan los queries.
+                                                                              //proses-api.php donde se realizan los queris.
         var alertpesan = data.msg;
         if(data.success){
           this.storage.set('session_storage', data.result);
@@ -70,10 +70,6 @@ export class LoginPage implements OnInit {
 	  });
 	  toast.present();
     }
-  }
-
-  formRegister(){
-  	this.router.navigate(['/home']);
   }
 
 }
