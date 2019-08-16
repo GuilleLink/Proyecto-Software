@@ -1,37 +1,45 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-title text-center>Inicio Secretaria de Mesa</ion-title>
+        <ion-title text-center>Pagina de inicio de Secretaria de Mesa</ion-title>
     </ion-toolbar>
 
 </ion-header>
 
 <ion-content padding>
-    <ion-item-divider>
-        <ion-icon name="contact"></ion-icon>
-        <ion-label>
-            <h2>Secretaria</h2>
-        </ion-label>
-    </ion-item-divider>
 
+    <ion-item-divider>
+        <div class="secretary-Picture">
+            <ion-icon name="contact"></ion-icon>
+            <ion-label>
+                <h2>Nombre de la Secretaria</h2>
+            </ion-label>
+            <br>
+        </div>
+    </ion-item-divider>
     <br>
     <br>
     <ion-item>
-        <ion-text color="dark">
-            <h5>Instrucciones Generales</h5>
-            <h6>Ingrese el DPI en la linea de abajo y luego presione VERIFICAR.</h6>
-        </ion-text>
-        <br>
-        <ion-label position="stacked">DPI Votante
-            <ion-text color="danger">*</ion-text>
-        </ion-label>
-        <ion-input></ion-input>
-
+        <div class="contenido-general">
+            <ion-text color="dark">
+                <h5>Instrucciones Generales</h5>
+                <h6>Ingrese el DPI en la linea de abajo y luego presione VERIFICAR.</h6>
+            </ion-text>
+            <ion-label position="stacked">DPI Votante
+                <ion-text color="danger">*</ion-text>
+                <br>
+            </ion-label>
+            <br>
+            <input id="amountinput" type="text" pattern="[0-9]*" decimal="true" minlength="13" maxlength="13" button-char=" " #amount/>
+            <br>
+            <br>
+        </div>
     </ion-item>
     <br>
     <br>
-
-    <ion-button shape="round" expand="block" fill="solid" [routerLink]="['/informacion']" routerLinkActive="router-link-active">
-        VERIFICAR
-    </ion-button>
+    <div class="ion-button-Verify">
+        <ion-button shape="round" expand="block" [routerLink]="['/informacion']" routerLinkActive="router-link-active">
+            VERIFICAR
+        </ion-button>
+    </div>
 
 </ion-content>
