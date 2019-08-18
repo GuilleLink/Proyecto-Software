@@ -3,11 +3,12 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class PostProvider {
+export class PostProvider { 
 	//server: string = "http://localhost/SprintIITest/IONIC4_CRUD_LOGINREGIS_PHP_MYSQL/server_api/"; // default
 	// if you test in real device "http://localhost" change use the your IP	
-	server: string = "http://localhost/Proyecto-Software/server_api/";   
 
+	//server: string = "http://localhost/Proyecto-Software/server_api/";   //Equipo Alejandro
+	server: string = "http://localhost/SprintII_Software_/server_api/";    //Equipo Diego
 	constructor(public http : Http) {
 
 	}

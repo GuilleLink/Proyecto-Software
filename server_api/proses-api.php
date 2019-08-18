@@ -52,32 +52,38 @@
   }
   //DATOS DE VOTANTE EDITADO---------------------------------------------------------------------------------------------------------
   elseif($postjson['aksi']=='getdata'){
-  	$data = array();
+    $DPI = $postjson['DPI'];
     $query = mysqli_query($mysqli, 
-    "SELECT * 
-    FROM Votante
-    WHERE DPI =''
-    DESC LIMIT $postjson[start],$postjson[limit]");
+    "SELECT v.DPI AS DPI, v.Nombre as Nombre, v.Empadronado, m.Codigo_Mesa AS codigoMesa, c.Id_Centro
+    FROM Votante v
+    INNER JOIN Mesa m ON v.Codigo_Mesa = m.Codigo_Mesa
+    INNER JOIN Centro c on m.Codigo_Centro = c.Id_Centro
+    WHERE v.DPI = $DPI
+    ");
 
-  	while($row = mysqli_fetch_array($query)){
+  	$check = mysqli_num_rows($query);
 
-  		$data[] = array(
-  			'customer_id' => $row['customer_id'],
-  			'name_customer' => $row['name_customer'],
-  			'desc_customer' => $row['desc_customer'],
-  			'created_at' => $row['created_at'],
+    if($check>0){
+      $data = mysqli_fetch_array($query);
+      $datauser = array(
+        'DPI' => $data['DPI'],
+        'Nombre' => $data['Nombre'],
+        'Empadronado' => $data['Empadronado'],
+        'Mesa' => $data['codigoMesa'],
+        'Centro' => $data['Id_Centro'],
+      );
 
-  		);
-  	}
+      $result = json_encode(array('success'=>true, 'result'=>$datauser));  
 
-  	if($query) $result = json_encode(array('success'=>true, 'result'=>$data));
-  	else $result = json_encode(array('success'=>false));
-
-  	echo $result;
+    }else{
+      $result = json_encode(array('success'=>false, 'msg'=>'Votante no encontrado'));
+      
+    }
+    echo $result;
 
   }
   //-----------------------------------------------------------------------------------------------------------------------------------
-  
+
   //LOGIN EDITADO---------------------------------------------------------------------------------------------------------
   elseif($postjson['aksi']=="login"){
     $password = $postjson['password'];
@@ -95,12 +101,6 @@
       );
 
       $result = json_encode(array('success'=>true, 'result'=>$datauser));  
-      
-      /*if($data['status']=='y'){
-        $result = json_encode(array('success'=>true, 'result'=>$datauser));
-      }else{
-        $result = json_encode(array('success'=>false, 'msg'=>'Account Inactive')); 
-      }*/
     }else{
       $result = json_encode(array('success'=>false, 'msg'=>'Unregister Account'));
       

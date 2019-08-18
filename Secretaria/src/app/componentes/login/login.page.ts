@@ -1,4 +1,4 @@
-import * as core from "@angular/core";
+ import * as core from "@angular/core";
 import { Router, RouterModule } from "@angular/router";
 import { PostProvider } from "../../../providers/post-provider";
 import { ToastController } from "@ionic/angular";
@@ -36,10 +36,9 @@ export class LoginPage implements core.OnInit {
         aksi: "login"
       };
 
-      this.postPvdr.postData(body, "proses-api.php").subscribe(async data => {
-        //Llamada del metodo postData en post-provider, recibe como parametros
-        //El cuerpo con los datos de la tabla a consultar y el nombre de
-        //proses-api.php donde se realizan los queries.
+      this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{ //Llamada del metodo postData en post-provider, recibe como parametros
+                                                                              //El cuerpo con los datos de la tabla a consultar y el nombre de 
+                                                                              //proses-api.php donde se realizan los queris.
         var alertpesan = data.msg;
         if (data.success) {
           this.storage.set("session_storage", data.result);
@@ -69,7 +68,4 @@ export class LoginPage implements core.OnInit {
     }
   }
 
-  formRegister() {
-    this.router.navigate(["/home"]);
-  }
 }
