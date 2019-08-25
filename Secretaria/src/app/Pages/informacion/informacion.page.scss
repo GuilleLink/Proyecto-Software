@@ -1,5 +1,5 @@
 .no {
-    --background: #ff0000;
+    --background: #ff4d4d;
     &::after {
         content: "NO";
         margin-right: 50%;
@@ -7,9 +7,28 @@
 }
 
 .si {
-    --background: #33cc33;
+    --background: #66ff66;
     &::after {
         content: "SÍ";
         margin-right: 50%;
     }
 }
+
+.info {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.dpi {
+    text-align: center;
+}
+
+.btn {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 100%;
+    min-width: 20px;  
+    max-width: 800px;
+ }

@@ -1,41 +1,36 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title text-center>Información</ion-title>
+    <ion-title text-center>Información Votante</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
-  <ion-text color="dark">
-    <h4>Mesa: {{Mesa}}</h4>
-  </ion-text>
-  <ion-item>
-  <ion-input disabled="true" clear-input="true"></ion-input>
-  </ion-item>
-  <br>
-  <ion-text color="dark">
-    <h4>Nombre y apellido: {{Nombre}}</h4>
-  </ion-text>
-  <ion-item>
-  <ion-input disabled="true" clear-input="true"></ion-input>
-  </ion-item>
-  <br>
-  <ion-text color="dark">
-    <h4>Centro de votación: {{Centro}}</h4>
-  </ion-text>
-  <ion-item>
-  <ion-input disabled="true" clear-input="true"></ion-input>
-  </ion-item>
-  <br>
-  <ion-text color="dark">
-    <h4>Está empadronado: {{Empadronado}}</h4>
-  </ion-text>
-  <br>
-  <ion-text color="dark">
+  <ion-text color="dark" class="dpi">
     <h4>DPI: {{DPI}}</h4>
   </ion-text>
+  <ion-text color="dark">
+    <h4>Nombre y apellido:</h4>
+  </ion-text>
+  <ion-item>
+  <ion-input type="text" class="info" disabled="true" clear-input="true"> {{Nombre}}</ion-input>
+  </ion-item>
+  <ion-text color="dark">
+    <h4>Mesa:</h4>
+  </ion-text>
+  <ion-item>
+  <ion-input type="text" class="info" disabled="true" clear-input="true"> {{Mesa}}</ion-input>
+  </ion-item>
+  <ion-text color="dark">
+    <h4>Centro de votación:</h4>
+  </ion-text>
+  <ion-item>
+  <ion-input type="text" class="info" disabled="true" clear-input="true"> {{Centro}}</ion-input>
+  </ion-item>
+  <ion-text color="dark">
+    <h4>Está empadronado: {{Empadronado}}</h4>
+  </ion-text> 
   <ion-item>
     <ion-input type="text" class="si" disabled="true" clear-input="true"></ion-input>
   </ion-item>
-  <br>
   <ion-text color="dark">
       <h4>Ya votó?</h4>
   </ion-text>
@@ -43,8 +38,7 @@
     <ion-input type="text" class="no" disabled="true" clear-input="true"></ion-input>
   </ion-item>
   <br>
-  <br>
-  <ion-button shape="round" expand="block" fill="solid" [routerLink]="['/home']" routerLinkActive="router-link-active">
+  <ion-button class="btn" shape="round" expand="block" fill="solid" [routerLink]="['/home']" routerLinkActive="router-link-active">
     ACEPTAR
   </ion-button>
 </ion-content>
