@@ -3,8 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { PostProvider } from '../../providers/post-provider';
 import { ToastController } from '@ionic/angular';
 import { Storage } from '@ionic/Storage';
-import { InformacionPage } from '../Pages/informacion/informacion.page';
-import { database } from 'firebase';
+
 
 @Component({
   selector: 'app-home',
@@ -14,13 +13,22 @@ import { database } from 'firebase';
 
 export class HomePage {
 
-  DPI: string;
+  //VOTANTES DE LA BASE DE DATOS - COPIA------
+  anggota: any;
   Nombre: string;
-  Empadronado: string;
-  Mesa: string;
-  Centro: string;
-  votantes: any [];
   
+  votantes: any = [];
+  limit: number = 13; // LIMIT GET PERDATA
+  start: number = 0;
+  //------------------------------------------
+
+  //Intento sin lista de votantes-------------
+  DPI_: string;
+  Nombre_: string;
+  Empadronado_: string;
+  Mesa_: string;
+  Centro_: string;  
+  //-----------------------------------------
 
   constructor( 
     public router: Router,
@@ -29,41 +37,18 @@ export class HomePage {
     public toastCtrl: ToastController
     ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
 
-  /*async alerta1() {
-    const alert = await this.alertController.create({
-      header: 'Informacion votante',
-      //message: 'Esta persona si está empadronada. - holaaa',
-      buttons: ['Aceptar'],
-    });
-    await alert.present();
-  }
-  async alerta2() {
-    const alert = await this.alertController.create({
-      header: 'Alert',
-      message: 'Esta persona no está empadronada.',
-      buttons: ['Aceptar']
-    });
-    await alert.present();
-  }*/
-
-  ReadArray(jasonn:any) {
-    for(let votante of jasonn){
-      this.votantes.push(votante);
-      
-    }
-    return this.votantes;
   }
 
     async LoadVotante(){
-    if(this.DPI != ""){
+    if(this.DPI_ != ""){
       let body = {
-        DPI: this.DPI,
-        Nombre: this.Nombre,
-        Empadronado: this.Empadronado,
-        Mesa: this.Mesa,
-        Centro: this.Centro,
+        DPI_: this.DPI_,
+        Nombre_: this.Nombre,
+        Empadronado_: this.Empadronado_,
+        Mesa_: this.Mesa_,
+        Centro_: this.Centro_,
         aksi: 'getdata'
       };
 
@@ -73,21 +58,21 @@ export class HomePage {
         var alertpesan = data.msg;
         if(data.success){
 
-          /*for(let votante of data.result){
-            this.votantes.push(votante);
-            console.log(votante);
-          }*/
+          //for(let votante of data.result){ //Este for deberia servir, sin embargo como la funcion es asincrona, no hay nada aun en votantes cuando el for lo recorre.
+          //  this.votantes.push(votante);
+          //  console.log(votante);
+          //}
           this.storage.set('session_storage', data.result);
           //this.Test(0,this.votantes[0],this.votantes[1],this.votantes[2],this.votantes[3],this.votantes[4]);
-          this.router.navigate(['/informacion/'+ this.DPI + '/' +  data.result[3] + '/' + this.Empadronado + '/' + this.Mesa+ '/'+this.Centro  ]);
+          this.router.navigate(['/informacion/'+ this.DPI_ + '/' +  data.result[3] + '/' + this.Empadronado_ + '/' + this.Mesa_+ '/'+this.Centro_  ]);
           const toast = await this.toastCtrl.create({
 		    message: 'Votante encontrado.',
 		  	duration: 2000
       });
       
 		  toast.present();
-		  this.Nombre = "";
-		  this.DPI = "";
+		  this.Nombre_ = "";
+		  this.DPI_ = "";
           console.log(data);
         }else{
           const toast = await this.toastCtrl.create({
@@ -109,19 +94,99 @@ export class HomePage {
     //return null;
   }
 
-  /*Test(){
-    return new Promise(resolve => { 		
-      let arr: any[] = this.LoadVotante;
-      setTimeout(() => {
-        resolve(true);
-        this.router.navigate(['/informacion/'+ arr[0]+'/'+arr[1]+'/'+arr[2]+'/'+arr[3]+'/'+arr[4]]); ///Navegacion hacia informacion
-      }, 500);
-  			      
+/*###################################################VOTANTES DE LA BASE DE DATOS - COPIA###################################################*/ 
+/*------------------------------------------------------------------------------------------------------------------------------------------*/
+  
+ionViewWillEnter(){
+    this.storage.get('session_storage').then((res)=>{
+      this.anggota = res;
+      this.Nombre = this.anggota.Nombre;
+      console.log(res);
+    });
+
+    this.votantes = [];
+    this.start = 0;
+    this.loadVotante();
+  }
+
+  addVotante(){
+  	//this.router.navigate(['/addcustomer']);
+  }
+
+  /* NO IMPLEMENTADO AUN. Se debe crear otra page (updateVotante) para el proposito.
+  */
+  updateVotante(DPI,Nombre,Empadronado,Mesa,Centro){
+  	//this.router.navigate(['/addcustomer/' + id + '/' + name + '/' + desc]);
+  }
+
+  showVotante(DPI,Nombre,Empadronado,Mesa,Centro){
+  	this.router.navigate(['/informacion/' + DPI + '/' + Nombre + '/' + Empadronado + '/' + Mesa + '/' + Centro]);
+  }
+
+  /* Refresh cada medio segundo del despliegue de votantes en la base de datos.
+  */ 
+  doRefresh(event){
+  	setTimeout(() =>{
+  		this.ionViewWillEnter();
+  		event.target.complete();
+  	}, 500);
+  }
+
+  /*PODRIA MODIFICARSE!! VER loadVotante() MAS ABAJO..
+  */ 
+  loadData(event:any){
+  	this.start += this.limit;
+  	setTimeout(() =>{
+  	this.loadVotante().then(()=>{
+  		event.target.complete();
   	});
-    
-    //this.router.navigate(['/informacion/'+ dpi + '/' + nombre + '/' + empadronado + '/' + mesa+ '/'+centro  ]); ///Navegacion hacia informacion
-  	
-  }*/
+  	}, 500);
+  }
+
+  /* Funcion para eliminar un votante de la base de datos.
+  */ 
+  delVotante(dpi){
+
+  	let body = {
+  			aksi : 'delete',
+  			votante_dpi : dpi
+  		};
+
+  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+  			this.ionViewWillEnter();
+  		});
+
+  }
+
+  /*ESTE LOADVOTANTE, PODRIA MODIFICARSE PARA QUE JALARA EL DPI INGRESADO Y CARGARA EL VOTANTE CON ESE DPI.
+  */ 
+  loadVotante(){
+  	return new Promise(resolve => {
+  		let body = {
+  			aksi : 'getdata',
+  			limit : this.limit,
+  			start : this.start,
+  		};
+  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+  			for(let votante of data.result){
+  				this.votantes.push(votante);
+  			}
+  			resolve(true);
+  		});
+  	});
+  }
+
+  /* Funcion asincrona para salir del login.
+  */ 
+  async prosesLogout(){
+    this.storage.clear();
+    this.router.navigate(['/login']);
+    const toast = await this.toastCtrl.create({
+        message: 'logout succesful',
+        duration: 3000
+      });
+    toast.present();
+  }
 
 }
 
