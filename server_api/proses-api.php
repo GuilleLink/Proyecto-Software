@@ -144,6 +144,32 @@
     }
     echo $result;
   }
+  //LOGIN Presidente------------------------------------------------------------------------------------------------------------------------------
+  elseif($postjson['aksi']=="loginP"){
+    $password = $postjson['password'];
+    $Nombre= $postjson['Nombre'];
+    $query = mysqli_query($mysqli, 
+    "SELECT * 
+     FROM Presidente 
+     WHERE Clave='$password' AND Nombre='$Nombre'");
+    $check = mysqli_num_rows($query);
+
+    if($check>0){
+      $data = mysqli_fetch_array($query);
+      $datauser = array(
+        'Id_Presidente' => $data['Id_Presidente'],
+        'Nombre' => $data['Nombre'],
+        'Clave' => $data['Clave']
+      );
+
+      $result = json_encode(array('success'=>true, 'result'=>$datauser));  
+    }else{
+      $result = json_encode(array('success'=>false, 'msg'=>'Unregister Account'));
+      
+    }
+    echo $result;
+  }
+
   //---------------------------------------------------------------------------------------------------------------------------------
 
   /*elseif($postjson['aksi']=="register"){
