@@ -7,11 +7,7 @@ export class PostProvider {
 	//server: string = "http://localhost/SprintIITest/IONIC4_CRUD_LOGINREGIS_PHP_MYSQL/server_api/"; // default
 	// if you test in real device "http://localhost" change use the your IP	
 
-<<<<<<< HEAD
 	server: string = "http://localhost/Proyecto-Software/server_api/";   //Equipo Alejandro
-=======
-	server: string = "http://localhost/Proyecto-Software/server_api/";   //Equipo Alejandro
->>>>>>> cf26db0675c7a1f3d09034f379dc1447c17a42f5
 	//server: string = "http://localhost/SprintII_Software_/server_api/";    //Equipo Diego
 	constructor(public http : Http) {
 
