@@ -10,6 +10,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { firebaseConfig } from '../environments/environment';
+import {HttpModule} from '@angular/http';
+import { PostProvider } from '../providers/post-provider';
+
+import { IonicStorageModule } from '@ionic/Storage';
 
 import {AngularFireModule} from "@angular/fire";
 import { AngularFireAuthModule, AngularFireAuth} from "@angular/fire/auth";
@@ -17,11 +21,17 @@ import { AngularFireAuthModule, AngularFireAuth} from "@angular/fire/auth";
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-  AngularFireModule.initializeApp(firebaseConfig),
-  AngularFireAuthModule],
+  imports: [
+    BrowserModule, 
+    HttpModule, //MySQL
+    IonicStorageModule.forRoot(), //MySQL
+    IonicModule.forRoot(), 
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule],
   providers: [
     StatusBar,
+    PostProvider,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

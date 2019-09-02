@@ -1,5 +1,7 @@
 {
   "name": "PresidenteMesaInterface",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

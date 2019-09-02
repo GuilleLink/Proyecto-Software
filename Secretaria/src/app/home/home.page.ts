@@ -98,15 +98,14 @@ export class HomePage {
 /*------------------------------------------------------------------------------------------------------------------------------------------*/
   
 ionViewWillEnter(){
+    this.votantes = [];
+    this.start = 0;
+    this.loadVotante();
     this.storage.get('session_storage').then((res)=>{
       this.anggota = res;
       this.Nombre = this.anggota.Nombre;
       console.log(res);
     });
-
-    this.votantes = [];
-    this.start = 0;
-    this.loadVotante();
   }
 
   addVotante(){
