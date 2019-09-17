@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, 
   { path: 'home', loadChildren: './home/home.module#HomePageModule'/*, canActivate: [AuthGuard] */}, 
   { path: 'login', loadChildren: './componentes/login/login.module#LoginPageModule'/*, canActivate: [NologinGuard]*/ },
-  { path: 'informacion/:DPI/:Nombre/:Empadronado/:Mesa/:Centro', loadChildren: './Pages/informacion/informacion.module#InformacionPageModule' },
+  { path: 'informacion/:DPI', loadChildren: './Pages/informacion/informacion.module#InformacionPageModule' },
 
 ];
 

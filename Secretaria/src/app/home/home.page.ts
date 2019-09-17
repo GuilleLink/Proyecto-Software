@@ -16,6 +16,7 @@ export class HomePage {
   //VOTANTES DE LA BASE DE DATOS - COPIA------
   anggota: any;
   Nombre: string;
+  dPiValido: boolean;
   
   votantes: any = [];
   limit: number = 13; // LIMIT GET PERDATA
@@ -42,57 +43,35 @@ export class HomePage {
   }
 
     async LoadVotante(){
-    if(this.DPI_ != ""){
-      let body = {
-        DPI_: this.DPI_,
-        Nombre_: this.Nombre,
-        Empadronado_: this.Empadronado_,
-        Mesa_: this.Mesa_,
-        Centro_: this.Centro_,
-        aksi: 'getdata'
-      };
-
-      this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{ //Llamada del metodo postData en post-provider, recibe como parametros
-                                                                              //El cuerpo con los datos de la tabla a consultar y el nombre de 
-                                                                              //proses-api.php donde se realizan los queris.
-        var alertpesan = data.msg;
-        if(data.success){
-
-          //for(let votante of data.result){ //Este for deberia servir, sin embargo como la funcion es asincrona, no hay nada aun en votantes cuando el for lo recorre.
-          //  this.votantes.push(votante);
-          //  console.log(votante);
-          //}
-          this.storage.set('session_storage', data.result);
-          //this.Test(0,this.votantes[0],this.votantes[1],this.votantes[2],this.votantes[3],this.votantes[4]);
-          this.router.navigate(['/informacion/'+ this.DPI_ + '/' +  data.result[3] + '/' + this.Empadronado_ + '/' + this.Mesa_+ '/'+this.Centro_  ]);
-          const toast = await this.toastCtrl.create({
-		    message: 'Votante encontrado.',
-		  	duration: 2000
-      });
+      //aca tiene que ir el query y el if
+      const x = await this.verificarDPI()
+      //poner un wait de un segundo?
       
-		  toast.present();
-		  this.Nombre_ = "";
-		  this.DPI_ = "";
-          console.log(data);
-        }else{
-          const toast = await this.toastCtrl.create({
-		    message: alertpesan,
-		    duration: 2000
-		  });
-    	  toast.present();
-        }
-        //return data.result
-      });
-
-    }else{
-      const toast = await this.toastCtrl.create({
-		message: 'Votante no encontrado.',  
-		duration: 2000
-	  });
-	  toast.present();
+      if (this.dPiValido) {
+        this.router.navigate(['/informacion/'+ this.DPI_]);
+      }
+      else{
+        const toast = await this.toastCtrl.create({
+          message: "DPI Invalido",
+          duration: 2000
+        });
+        toast.present()
+      }
+      
     }
-    //return null;
-  }
+     verificarDPI(){
+      return new Promise(resolve => {
+        let body = {
+          DPI_: this.DPI_,
+          aksi : 'dpiValido'
+        };
+        this.postPvdr.postData(body, 'proses-api.php').subscribe(datauser => {
+          console.log(datauser.success)
+          this.dPiValido = datauser.success
+          resolve(true);
+        });
+      });
+    }
 
 /*###################################################VOTANTES DE LA BASE DE DATOS - COPIA###################################################*/ 
 /*------------------------------------------------------------------------------------------------------------------------------------------*/

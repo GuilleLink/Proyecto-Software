@@ -50,47 +50,5 @@
     </div>
     <br>
     <br>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->
-<!--###############################################VOTANTES DE LA BASE DE DATOS - COPIA######################################################-->
-<!--------------------------------------------------------------------------------------------------------------------------------------------->
-    
-    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-	    <ion-refresher-content
-	      pullingIcon="arrow-dropdown"
-	      pullingText="Pull to refresh"
-	      refreshingSpinner="circles"
-	      refreshingText="Refreshing...">
-	    </ion-refresher-content>
-	</ion-refresher>
-	<ion-list>
-		<ion-item-sliding *ngFor="let votante of votantes"> <!--Empieza FOR con los votantes de la base de datos.-->
-            
-            <!--PARA BORRAR UN VOTANTE DE LA BASE DE DATOS. Nota: podria ser util mas adelante-->
-            <ion-item-options side="start">
-		      <ion-item-option color="danger" (click)="delVotante(votante.DPI)">Delete</ion-item-option>
-		    </ion-item-options>
-
-		    <ion-item>
-		      <ion-label>{{votante.Nombre}}</ion-label>
-		    </ion-item>
-
-		    <ion-item-options side="end">
-              <!--Para dirigirse a informacion y ver los datos del votante seleccionado-->
-		      <ion-item-option color="secondary" (click)="showVotante(votante.DPI,votante.Nombre,votante.Empadronado,votante.Mesa,votante.Centro)">Show</ion-item-option>
-            <!--
-                Para actualizar datos (NO IMPLEMENTADO AUN, SE NECESITA CREAR OTRA PAGE QUE SERIA UpdateVotante)
-		      <ion-item-option (click)="updateVotante(votante.DPI,votante.Nombre,votante.Empadronado,votante.Mesa,votante.Centro)">Update</ion-item-option>
-            -->
-		    </ion-item-options>
-		</ion-item-sliding>
-	</ion-list>
-
-	<ion-infinite-scroll (ionInfinite)="loadData($event)">
-	    <ion-infinite-scroll-content
-	      loadingSpinner="bubbles"
-	      loadingText="Loading more data...">
-	    </ion-infinite-scroll-content>
-	  </ion-infinite-scroll>
-
 
 </ion-content>

@@ -97,7 +97,7 @@
     INNER JOIN Mesa m ON v.Codigo_Mesa = m.Codigo_Mesa
     INNER JOIN Centro c on m.Codigo_Centro = c.Id_Centro
     ORDER BY v.DPI DESC 
-    LIMIT $postjson[start],$postjson[limit]");
+    ");
 
   	while($row = mysqli_fetch_array($query)){
 
@@ -127,6 +127,7 @@
     "SELECT * 
      FROM Secretaria 
      WHERE Clave='$password' AND Nombre='$Nombre'");
+    
     $check = mysqli_num_rows($query);
 
     if($check>0){
@@ -139,11 +140,62 @@
 
       $result = json_encode(array('success'=>true, 'result'=>$datauser));  
     }else{
-      $result = json_encode(array('success'=>false, 'msg'=>'Unregister Account'));
+      $result = json_encode(array('success'=>false, 'msg'=>'Cuenta no registrada'));
       
     }
     echo $result;
+    
   }
+  //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+  elseif($postjson['aksi']=="dpiV"){
+    $DPI_ = $postjson['DPI_'];
+    $query = mysqli_query($mysqli, 
+    "SELECT v.Nombre as Nombre, v.Empadronado AS Empadronado,  m.Codigo_Mesa AS Mesa, c.Id_Centro AS Centro
+     FROM Votante v
+     INNER JOIN Mesa m ON v.Codigo_Mesa = m.Codigo_Mesa
+     INNER JOIN Centro c on m.Codigo_Centro = c.Id_Centro 
+     WHERE v.DPI='$DPI_'");
+    $check = mysqli_num_rows($query);
+    if($check>0){
+      $data = mysqli_fetch_array($query);
+      $datauser = array(
+        'Nombre' => $data['Nombre'],
+        'Empadronado' => $data['Empadronado'],
+        'Mesa' => $data['Mesa'],
+        'Centro' => $data['Centro']
+      );
+
+      $result = json_encode(array('success'=>true, 'result'=>$datauser));  
+    }else{
+      $result = json_encode(array('success'=>false, 'msg'=>'Query malo'));
+      
+    }
+    echo $result;
+    
+  }
+   //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+   elseif($postjson['aksi']=="dpiValido"){
+    $DPI_ = $postjson['DPI_'];
+    $query = mysqli_query($mysqli, 
+    "SELECT v.Nombre as Nombre
+     FROM Votante v
+     WHERE v.DPI='$DPI_'");
+    $check = mysqli_num_rows($query);
+    if($check>0){
+      $data = mysqli_fetch_array($query);
+      $datauser = array(
+        'Nombre' => $data['Nombre']
+      );
+
+      $result = json_encode(array('success'=>true, 'result'=>$datauser));  
+    }else{
+      $result = json_encode(array('success'=>false, 'msg'=>'DPI no registrado'));
+      
+    }
+    echo $result;
+    
+  }
+  //
   //LOGIN Presidente------------------------------------------------------------------------------------------------------------------------------
   elseif($postjson['aksi']=="loginP"){
     $password = $postjson['password'];

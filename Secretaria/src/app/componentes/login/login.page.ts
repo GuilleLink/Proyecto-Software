@@ -44,7 +44,7 @@ export class LoginPage implements core.OnInit {
           this.storage.set("session_storage", data.result);
           this.router.navigate(["/home"]); ///Navegacion hacia home una vez verificados los datos
           const toast = await this.toastCtrl.create({
-            message: "Login Succesfully.",
+            message: "Ha ingresado satisfactoriamente",
             duration: 2000
           });
           toast.present();
