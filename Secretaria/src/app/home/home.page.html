@@ -6,7 +6,7 @@
                     New
                     <ion-icon slot="end" name="add"></ion-icon>
                 </ion-button>-->
-                <ion-button color="success" fill="outline" (click)="prosesLogout()"><ion-icon slot="end" name="log-out"></ion-icon></ion-button>
+                <ion-button color="danger" fill="solid" (click)="prosesLogout()"  shape="round"><ion-icon slot="icon-only" name="power"></ion-icon></ion-button>
             </ion-buttons>
     </ion-toolbar>
 
@@ -44,7 +44,7 @@
     <br>
     <br>
     <div class="ion-button-Verify">
-        <ion-button shape="round" expand="block" (click)="LoadVotante()">
+        <ion-button color="secondary" shape="round" expand="block" (click)="LoadVotante()">
             VERIFICAR
         </ion-button>
     </div>
