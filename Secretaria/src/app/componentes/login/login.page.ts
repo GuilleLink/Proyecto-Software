@@ -13,6 +13,11 @@ export class LoginPage implements core.OnInit {
   Nombre: string;
   password: string;
 
+  usuario = {
+    Nombre: '',
+    password: ''
+  };
+
   constructor(
     public router: Router,
     private postPvdr: PostProvider,
@@ -28,13 +33,19 @@ export class LoginPage implements core.OnInit {
     }).catch(err => alert('los datos son incorrectos o no existe el usuario'));
   }*/
 
+  onSubmitTemplate(){
+    console.log( this.usuario );
+  }
+
   async prosesLogin() {
-    if (this.Nombre != "" && this.password != "") {
+    if (this.usuario.Nombre != "" && this.usuario.password != "") {
       let body = {
-        Nombre: this.Nombre,
-        password: this.password,
+        Nombre: this.usuario.Nombre,
+        password: this.usuario.password,
         aksi: "login"
       };
+
+      
 
       this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{ //Llamada del metodo postData en post-provider, recibe como parametros
                                                                               //El cuerpo con los datos de la tabla a consultar y el nombre de 
@@ -48,8 +59,8 @@ export class LoginPage implements core.OnInit {
             duration: 2000
           });
           toast.present();
-          this.Nombre = "";
-          this.password = "";
+          this.usuario.Nombre = "";
+          this.usuario.password = "";
           console.log(data);
         } else {
           const toast = await this.toastCtrl.create({

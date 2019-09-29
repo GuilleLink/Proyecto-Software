@@ -6,7 +6,7 @@ import { CardComponent } from './card/card.component';
 import { CardNullComponent } from './card-null/card-null.component';
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, CardComponent, CardNullComponent],
   exports: [HeaderComponent, CardComponent, CardNullComponent],
   imports: [CommonModule, IonicModule]
 })
