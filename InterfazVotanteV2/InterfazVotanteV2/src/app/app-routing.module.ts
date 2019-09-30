@@ -5,7 +5,8 @@ import { ComponentsModule } from './components/components.module';
 const routes: Routes = [
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   { path: 'inicio', loadChildren: './pages/inicio/inicio.module#InicioPageModule' },
-  { path: 'candidatos-presidentes', loadChildren: './pages/candidatos-presidentes/candidatos-presidentes.module#CandidatosPresidentesPageModule' }
+  { path: 'candidatos-presidentes', loadChildren: './pages/candidatos-presidentes/candidatos-presidentes.module#CandidatosPresidentesPageModule' },  { path: 'candidatos-alcaldes', loadChildren: './pages/candidatos-alcaldes/candidatos-alcaldes.module#CandidatosAlcaldesPageModule' }
+
 ];
 
 @NgModule({

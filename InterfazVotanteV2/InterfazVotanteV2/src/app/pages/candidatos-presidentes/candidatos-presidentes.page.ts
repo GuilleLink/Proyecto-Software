@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./candidatos-presidentes.page.scss'],
 })
 export class CandidatosPresidentesPage implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
