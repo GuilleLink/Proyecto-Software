@@ -1,0 +1,21 @@
+ion-card{
+    min-width: 150px;
+    text-align: center;
+    margin: 2px;
+    min-height: 250px;
+}
+ion-card-header{
+    padding:0%;
+}
+ion-card-title{
+    font-size: 16px;
+    text-transform: uppercase;
+}
+ion-card-subtitle{
+    font-size: 10px;
+    width: 130px;
+    margin-top: 5px;
+}
+ion-card-content{
+    padding-top: 12px;
+}
