@@ -1,13 +1,15 @@
 <ion-header>
-    <ion-toolbar color="primary">        
+    <ion-toolbar color="primary">
         <ion-title text-center>Inicio: Secretaria de Mesa</ion-title>
         <ion-buttons slot="primary">
-                <!--<ion-button color="tertiary" fill="outline" (click)="addVotante()">
+            <!--<ion-button color="tertiary" fill="outline" (click)="addVotante()">
                     New
                     <ion-icon slot="end" name="add"></ion-icon>
                 </ion-button>-->
-                <ion-button color="danger" fill="solid" (click)="prosesLogout()"  shape="round"><ion-icon slot="icon-only" name="power"></ion-icon></ion-button>
-            </ion-buttons>
+            <ion-button color="danger" fill="solid" (click)="prosesLogout()" shape="round">
+                <ion-icon slot="icon-only" name="power"></ion-icon>
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 
 </ion-header>
@@ -34,7 +36,7 @@
             <ion-label position="stacked">DPI Votante
                 <ion-text color="danger">*</ion-text>
             </ion-label>
-            <ion-input type="text" [(ngModel)]="DPI_"></ion-input>
+            <ion-input type="number" pattern="[0-9]*" maxlength="13" [(ngModel)]="DPI_" required></ion-input>
             <!--<br>
             <input id="amountinput" type="text" pattern="[0-9]*" decimal="true" minlength="13" maxlength="13" button-char=" " #amount/>
             <br>

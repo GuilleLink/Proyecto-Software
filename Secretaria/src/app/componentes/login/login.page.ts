@@ -37,6 +37,16 @@ export class LoginPage implements core.OnInit {
     console.log( this.usuario );
   }
 
+  async helpLoad(){
+    this.storage.clear();
+    this.router.navigate(['/login']);
+    const toast = await this.toastCtrl.create({
+        message: 'Pagina de ayuda Menu Principal',
+        duration: 2000
+      });
+    toast.present();
+  }
+
   async prosesLogin() {
     if (this.usuario.Nombre != "" && this.usuario.password != "") {
       let body = {

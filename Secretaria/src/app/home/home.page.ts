@@ -31,6 +31,10 @@ export class HomePage {
   Centro_: string;  
   //-----------------------------------------
 
+  //ngForms----------------------------------
+
+  //-----------------------------------------
+
   constructor( 
     public router: Router,
     private postPvdr: PostProvider,
