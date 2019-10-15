@@ -1,10 +1,16 @@
 <app-header titulo="Candidatos Presidentes"></app-header>
 
-<ion-grid>
+<ion-content>
+    <div class="candidatos">
+        <div *ngFor="let candidato of candidatos">
+            <app-card CardSubtitle="{{candidato.presidente}}" CardTitle="{{candidato.partido}}" ImageCard="{{candidato.URL}}"> </app-card>
+        </div>
+    </div>
+<!-- <ion-grid>
     <ion-row>
         <ion-col>
             <div>
-                <app-card CardSubtitle="Alejandro Giammattei" CardTitle="VAMOS" ImageCard="https://firebasestorage.googleapis.com/v0/b/prueba1-4edce.appspot.com/o/FotosCandidatosPresidente%2FAlejandro%20Giammattei%20-%20VAMOS.png?alt=media&token=ce4352d5-0a1d-482d-9b47-cdc013bb840b"> </app-card>
+                <app-card CardSubtitle="{{candidatos[0].presidente}}" CardTitle="VAMOS" ImageCard="https://firebasestorage.googleapis.com/v0/b/prueba1-4edce.appspot.com/o/FotosCandidatosPresidente%2FAlejandro%20Giammattei%20-%20VAMOS.png?alt=media&token=ce4352d5-0a1d-482d-9b47-cdc013bb840b"> </app-card>
             </div>
         </ion-col>
         <ion-col>
@@ -45,7 +51,7 @@
             </div>
         </ion-col>
     </ion-row>
-</ion-grid>
-<ion-content>
+</ion-grid> -->
+
     <ion-button href="/candidatos-alcaldes">Página de candidatos de Alcaldes</ion-button> 
 </ion-content>
