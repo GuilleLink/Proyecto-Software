@@ -1,6 +1,4 @@
-
-
-/*import { AppPage } from './app.po';
+import { AppPage } from './../page-objects/app.po';
 
 describe('new App', () => {
   let page: AppPage;
@@ -10,15 +8,19 @@ describe('new App', () => {
   });
 
   it('should be blank', () => {
-    page.navigateTo();-
+    page.navigateTo();
     expect(page.getParagraphText()).toContain('The world is your oyster.');
   });
-});*/
+});
+
+
+/*
 
 import { AppPage } from '../page-objects/app.po';
 import { LoginPage } from '../page-objects/login.po';
 import { InformacionPage } from '../page-objects/informacion.po';
 import { HomePage } from '../page-objects/home.po';
+import { app } from 'firebase';
 
 describe('Login', () => {
 
@@ -32,37 +34,34 @@ describe('Login', () => {
     app.load();
   });
 
-  describe('before logged in', () => {
-    it('displays the login screen', () => {
+  describe('Antes de hacer login', () => {
+    it('se despliega la pantalla de screen', () => {
       expect(login.rootElement().isDisplayed()).toEqual(true);
     });
 
-    it('allows in-app navigation to home', () => {
+    it('permite la navegacion hacia home', () => {
       login.clickSignIn();
       home.waitUntilVisible();
       login.waitUntilInvisible();
     });
 
-
-    it('displays an error message if the login fails', () => {
+    it('despliega un mensaje de error si el login falla', () => {
       login.enterEMail('test@test.com');
       login.enterPassword('bogus');
       login.clickSignIn();
       login.waitForError();
       expect(login.getErrorMessage()).toEqual(
-        'The password is invalid or the user does not have a password.'
+        'El password es invalido o no esta registrado.'
       );
-    });
-
-    
+    });    
   });
 
-  describe('once logged in', () => {
+  describe('Una vez hecho el login', () => {
     beforeEach(() => {
       home.waitUntilVisible();
     });
 
-    it('allows navigation to the informacion page', () => {
+    it('Permite la navegacion a la pagina de informacion', () => {
       home.clickVerificar();
       info.waitUntilVisible();
       home.waitUntilInvisible();
@@ -71,4 +70,4 @@ describe('Login', () => {
   });
 });
 
-//https://ionicframework.com/docs/building/testing
+//https://ionicframework.com/docs/building/testing*/
