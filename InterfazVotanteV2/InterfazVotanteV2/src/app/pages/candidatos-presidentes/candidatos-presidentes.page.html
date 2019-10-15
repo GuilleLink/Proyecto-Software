@@ -3,7 +3,7 @@
 <ion-content>
     <div class="candidatos">
         <div *ngFor="let candidato of candidatos">
-            <app-card CardSubtitle="{{candidato.presidente}}" CardTitle="{{candidato.partido}}" ImageCard="{{candidato.URL}}"> </app-card>
+            <app-card CardSubtitle="{{candidato.presidente}}" CardTitle="{{candidato.partido}}" ImageCard="{{candidato.URL}}"  button="true" id="CardPresidente" (click)="PullID(candidato.id_voto)" > </app-card>
         </div>
     </div>
 <!-- <ion-grid>

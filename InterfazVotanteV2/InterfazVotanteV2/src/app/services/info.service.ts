@@ -10,6 +10,7 @@ export interface TaskI {
   vicepresidente: string;
   partido: string;
   URL: string;
+  id_voto: Int16Array;
 }
 
 
@@ -19,15 +20,15 @@ export interface TaskI {
 export class InfoService {
   private candidatosCollection: AngularFirestoreCollection<TaskI>;
   private candidatos: Observable<TaskI[]>;
-  private alcaldesCollection: AngularFirestoreCollection<TaskI>;
-  private alcaldes: Observable<TaskI[]>;
-  private distritosCollection: AngularFirestoreCollection<TaskI>;
-  private distritos: Observable<TaskI[]>;
-  private listaCollection: AngularFirestoreCollection<TaskI>;
-  private lista: Observable<TaskI[]>;
-  private parlacenCollection: AngularFirestoreCollection<TaskI>;
-  private parlacen: Observable<TaskI[]>;
-
+  //private alcaldesCollection: AngularFirestoreCollection<TaskI>;
+  //private alcaldes: Observable<TaskI[]>;
+  //private distritosCollection: AngularFirestoreCollection<TaskI>;
+  //private distritos: Observable<TaskI[]>;
+  //private listaCollection: AngularFirestoreCollection<TaskI>;
+  //private lista: Observable<TaskI[]>;
+  //private parlacenCollection: AngularFirestoreCollection<TaskI>;
+  //private parlacen: Observable<TaskI[]>;
+//
   constructor(db: AngularFirestore) { 
     this.candidatosCollection = db.collection<TaskI>('candidatos');
     this.candidatos = this.candidatosCollection.snapshotChanges().pipe(
