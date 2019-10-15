@@ -6,6 +6,9 @@ ion-card{
 }
 ion-card-header{
     padding:0%;
+    max-width: 170px;
+    max-height: 170px;
+    
 }
 ion-card-title{
     font-size: 16px;
@@ -18,4 +21,8 @@ ion-card-subtitle{
 }
 ion-card-content{
     padding-top: 12px;
+}
+img{
+    width: 170px;
+    height: 170px;
 }
