@@ -3,13 +3,13 @@ import { TaskI, InfoService } from "../../services/info.service";
 import { Router, RouterModule } from "@angular/router";
 import { Storage } from "@ionic/Storage";
 import { PostProvider } from "../../../providers/post-provider";
+import { ToastController } from "@ionic/angular";
 
 @Component({
   selector: "app-candidatos-presidentes",
   templateUrl: "./candidatos-presidentes.page.html",
   styleUrls: ["./candidatos-presidentes.page.scss"]
 })
-
 
 export class CandidatosPresidentesPage implements OnInit {
   candidatos: TaskI[];
@@ -23,15 +23,21 @@ export class CandidatosPresidentesPage implements OnInit {
 
   voto = {
     id_Voto: '',
-    id_centro: '',
-    id_presidente_vicepresidente: '',
-    id_alcalde: '',
-    id_diputados_parlacen: '',
-    id_diputados_distrito: '',
-    id_diputados_lista: ''
+    id_centro: '2',
+    id_presidente_vicepresidente: '1',
+    id_alcalde: '1',
+    id_diputados_parlacen: '1',
+    id_diputados_distrito: '1',
+    id_diputados_lista: '1'
   };
 
-  constructor(private infoservice: InfoService) {}
+  constructor(
+    private infoservice: InfoService,
+    public router: Router,
+    private postPvdr: PostProvider,
+    public storage: Storage,
+    public toastCtrl: ToastController
+  ) {}
 
   ngOnInit() {
     this.infoservice.getCandidatos().subscribe(res => {
@@ -43,23 +49,21 @@ export class CandidatosPresidentesPage implements OnInit {
 
   PullID(id_voto: Int16Array){
     this.id_Voto =  id_voto;
-    console.log("ESte el id del partido: "+this.id_Voto);
-
+    //console.log("ESte el id del partido: "+this.id_Voto);
+    this.voto.id_Voto = (this.id_Voto)+'';
   }
-/*
+
   async enviarDatos() {
     let body = {
-      id_Voto: this.
-      id_centro: string;
-      id_presidente_vicepresidente: string;
-      id_alcalde: string;
-      id_diputados_parlacen: string;
-      id_diputados_distrito: string;
-      id_diputados_lista: string;
+      id_Voto: this.voto.id_Voto,
+      id_centro: this.voto.id_centro,
+      id_presidente_vicepresidente: this.voto.id_presidente_vicepresidente,
+      id_alcalde: this.voto.id_alcalde,
+      id_diputados_parlacen: this.voto.id_diputados_parlacen,
+      id_diputados_distrito: this.voto.id_diputados_distrito,
+      id_diputados_lista: this.voto.id_diputados_lista,
       aksi: "emitirvoto"
     };
-
-    
 
     this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{ //Llamada del metodo postData en post-provider, recibe como parametros
                                                                             //El cuerpo con los datos de la tabla a consultar y el nombre de 
@@ -67,14 +71,14 @@ export class CandidatosPresidentesPage implements OnInit {
       var alertpesan = data.msg;
       if (data.success) {
         this.storage.set("session_storage", data.result);
-        this.router.navigate(["/home"]); ///Navegacion hacia home una vez verificados los datos
+        this.router.navigate(["/candidatos-alcaldes"]); ///Navegacion hacia alcaldes prueba
         const toast = await this.toastCtrl.create({
-          message: "Ha ingresado satisfactoriamente",
+          message: "Su voto ha sido emitido exitosamente",
           duration: 2000
         });
         toast.present();
-        this.usuario.Nombre = "";
-        this.usuario.password = "";
+        //this.usuario.Nombre = "";
+        //this.usuario.password = "";
         console.log(data);
       } else {
         const toast = await this.toastCtrl.create({
@@ -85,6 +89,6 @@ export class CandidatosPresidentesPage implements OnInit {
       }
     });
     
-  }*/
+  }
 
 }

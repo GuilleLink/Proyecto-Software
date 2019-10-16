@@ -6,5 +6,5 @@
             <app-card CardSubtitle="{{candidato.presidente}}" CardTitle="{{candidato.partido}}" ImageCard="{{candidato.URL}}"  button="true" id="CardPresidente" (click)="PullID(candidato.id_voto)" > </app-card>
         </div>
     </div>
-    <ion-button href="/candidatos-alcaldes">Página de candidatos de Alcaldes</ion-button> 
+    <ion-button (click)="enviarDatos()">Página de candidatos de Alcaldes</ion-button> 
 </ion-content>
