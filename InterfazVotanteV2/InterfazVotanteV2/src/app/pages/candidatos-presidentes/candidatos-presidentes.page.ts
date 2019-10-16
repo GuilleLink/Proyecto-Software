@@ -49,8 +49,8 @@ export class CandidatosPresidentesPage implements OnInit {
 
   PullID(id_voto: Int16Array){
     this.id_Voto =  id_voto;
-    //console.log("ESte el id del partido: "+this.id_Voto);
-    this.voto.id_Voto = (this.id_Voto)+'';
+    console.log("ESte el id del partido: "+this.id_Voto);
+    this.voto.id_Voto = (id_voto)+'';
   }
 
   async enviarDatos() {
