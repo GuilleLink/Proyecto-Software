@@ -28,6 +28,20 @@
   	echo $result;
 
   }
+
+  //EMITIR VOTO------------------------------------------------------------------------------------------------------------------
+  elseif ($postjson['aksi']=='emitirvoto') {
+    $ID = $postjson['id_Voto'];
+    $query = mysqli_query($mysqli,
+    "INSERT INTO Voto_Emitido(id_voto, id_centro, id_presidente_vicepresidente, id_alcalde, id_diputados_parlacen, id_diputados_distrito, id_diputados_lista)
+     VALUES ($ID,1,1,1,1,1,1)");
+
+    if($query) $result = json_encode(array('success'=>true, 'result'=>'success'));
+    else $result = json_encode(array('success'=>false, 'result'=>'error'));
+
+    echo $result;
+  }
+
   //ACTUALIZAR VOTANTE------------------------------------------------------------------------------------------------------------------
   elseif($postjson['aksi']=='update'){
   	$query = mysqli_query($mysqli, "UPDATE Votante SET 
