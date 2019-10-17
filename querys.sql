@@ -61,6 +61,16 @@ create unique index Ubicacion_Codigo_Ubicacion_uindex
 	on Ubicacion (Codigo_Ubicacion);
 
 
+create table Alcalde
+(
+    ID     int         not null,
+    Nombre varchar(70) null,
+    constraint Alcalde_ID_uindex
+        unique (ID)
+);
+
+alter table Alcalde
+    add primary key (ID);
 
 create table Votante
 (
@@ -73,6 +83,71 @@ create table Votante
 	constraint Votante_Mesa_Codigo_Mesa_fk
 		foreign key (Codigo_Mesa) references Mesa (Codigo_Mesa)
 );
+
+create table Presidente_Vicepresidente
+(
+    ID             int         not null,
+    Presidente     varchar(70) null,
+    Vicepresidente varchar(70) null,
+    constraint Presidente_Vicepresidente_ID_uindex
+        unique (ID)
+);
+
+alter table Presidente_Vicepresidente
+    add primary key (ID);
+
+create table Diputados_Distrito_Electoral
+(
+    ID     int           not null,
+    Nombre varchar(5000) null,
+    constraint Diputados_Distrito_Electoral_ID_uindex
+        unique (ID)
+);
+
+create table Diputados_Lista_Nacional
+(
+    ID     int           not null
+        primary key,
+    Nombre varchar(5000) not null
+);
+
+create table Diputados_Parlacen
+(
+    ID              int         not null,
+    PartidoPolitico varchar(70) null,
+    constraint Parlacen_ID_uindex
+        unique (ID)
+);
+
+alter table Diputados_Parlacen
+    add primary key (ID);
+
+create table Voto_Emitido
+(
+    id_voto                      int auto_increment
+        primary key,
+    id_centro                    varchar(10) not null,
+    id_presidente_vicepresidente int         not null,
+    id_Alcalde                   int         not null,
+    id_Diputados_Parlacen        int         not null,
+    id_Diputados_Distrito        int         not null,
+    id_Diputados_Lista           int         not null,
+    constraint Voto_Emitido_Alcalde_ID_fk
+        foreign key (id_Alcalde) references Alcalde (ID),
+    constraint Voto_Emitido_Centro_Id_Centro_fk
+        foreign key (id_centro) references Centro (Id_Centro),
+    constraint Voto_Emitido_Diputados_Distrito_Electoral_ID_fk
+        foreign key (id_Diputados_Distrito) references Diputados_Distrito_Electoral (ID),
+    constraint Voto_Emitido_Diputados_Lista_Nacional_ID_fk
+        foreign key (id_Diputados_Lista) references Diputados_Lista_Nacional (ID),
+    constraint Voto_Emitido_Diputados_Parlacen_ID_fk
+        foreign key (id_Diputados_Parlacen) references Diputados_Parlacen (ID),
+    constraint Voto_Emitido_Presidente_Vicepresidente_ID_fk
+        foreign key (id_presidente_vicepresidente) references Presidente_Vicepresidente (ID)
+);
+
+
+	
 
 -- insertando de Ubicacion
 INSERT INTO ProyectoTSEIonic.Ubicacion (Codigo_Ubicacion, Departamento, Municipio) VALUES ('0101', 'Guatemala', 'Guatemala');
@@ -130,3 +205,27 @@ INSERT INTO ProyectoTSEIonic.Mesa (Codigo_Mesa, Codigo_Secretaria, Codigo_Presid
 
 INSERT INTO ProyectoTSEIonic.Votante (DPI, Nombre, Empadronado, Codigo_Mesa) VALUES ('3001484610101', 'Andrés Urizar', 1, 710);
 INSERT INTO ProyectoTSEIonic.Votante (DPI, Nombre, Empadronado, Codigo_Mesa) VALUES ('3280022911101', 'Gustavo de León', 1, 2968);
+
+--Insterts presidente_Vicepresidente
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (0, 'Danilo Roca', 'Valentino Carrera');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (1, 'Benito Morales', 'Mani Perdomo');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (2, 'Julio Estrada', 'Raul Aguilar');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (3, 'Manfredo Marroquin', 'Pedro Silva');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (4, 'Estuardo Galdamez', 'Pedro Aguilar');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (5, 'Mauricio Radford', 'Jose Estrada');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (6, 'Edmond Mulet', 'Juan Garcia');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (7, 'Anibal Garcia', 'Gerardo Hernandez');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (8, 'Thelma Cabrera', 'Andrea Perdomo');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (9, 'Roberto Arzu', 'Peter Estrada');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (10, 'Jose Chea', 'Josue Juarez');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (11, 'Edwin Escobar', 'Paul Mendez');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (12, 'Thelma Aldana', 'Ana Lucia Garcia');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (13, 'Fredy Cabrera', 'Estuardo Rodriguez');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (14, 'Sandra Torres', 'Manuel Jimenez');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (15, 'Luis Velasquez', 'Rodrigo Perez');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (16, 'Pablo Duarte', 'Rodrigo Zea');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (17, 'Pablo Ceto', 'Manuel Jimenez');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (18, 'Zury Rios', 'Ximena Estrada');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (19, 'Alejandro Giammattei', 'Andres Perez');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (20, 'Amilcar Rivera', 'Jose Umberto');
+insert into ProyectoTSEIonic.Presidente_Vicepresidente (ID, Presidente, Vicepresidente) values (21, 'Isaac Farchi', 'Pedro Sevilla');
