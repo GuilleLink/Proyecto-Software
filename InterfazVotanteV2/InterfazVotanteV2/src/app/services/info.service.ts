@@ -13,6 +13,14 @@ export interface TaskI {
   id_voto: Int16Array;
 }
 
+export interface TaskAl {
+  id?: string;
+  alcalde: string;
+  partido: string;
+  URL: string;
+  id_voto: Int16Array;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +28,8 @@ export interface TaskI {
 export class InfoService {
   private candidatosCollection: AngularFirestoreCollection<TaskI>;
   private candidatos: Observable<TaskI[]>;
+  private alcaldesCollection: AngularFirestoreCollection<TaskAl>;
+  private alcaldes: Observable<TaskAl[]>;
   //private alcaldesCollection: AngularFirestoreCollection<TaskI>;
   //private alcaldes: Observable<TaskI[]>;
   //private distritosCollection: AngularFirestoreCollection<TaskI>;
@@ -40,11 +50,27 @@ export class InfoService {
         });
       })
     );
+    this.alcaldesCollection = db.collection<TaskAl>('alcaldes');
+    this.alcaldes = this.alcaldesCollection.snapshotChanges().pipe(
+      map(actions =>{
+        return actions.map(a =>{
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return {id, ...data};
+        });
+      })
+    );
   }
   getCandidatos(){
     return this.candidatos;
   }
   getCandidato(id: string){
     return this.candidatosCollection.doc<TaskI>(id).valueChanges();
+  }
+  getAlcaldes(){
+    return this.alcaldes;
+  }
+  getAlcalde(id: string){
+    return this.alcaldesCollection.doc<TaskAl>(id).valueChanges()
   }
 }
