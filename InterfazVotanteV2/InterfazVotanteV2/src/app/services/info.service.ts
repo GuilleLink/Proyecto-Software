@@ -50,7 +50,7 @@ export class InfoService {
         });
       })
     );
-    this.alcaldesCollection = db.collection<TaskAl>('alcaldes');
+    this.alcaldesCollection = db.collection<TaskAl>('alcaldes/Guatemala/Guatemala'); //alcaldes debe estar como predeterminado
     this.alcaldes = this.alcaldesCollection.snapshotChanges().pipe(
       map(actions =>{
         return actions.map(a =>{
