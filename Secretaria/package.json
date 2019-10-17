@@ -10,7 +10,7 @@
         "test1": "ng test",
         "lint": "ng lint",
         "e2e1": "ng e2e",
-        "test": "karma start ./test-config/karma.conf.js",
+        "test": "vow --spec",
         "test-ci": "karma start ./test-config/karma.conf.js --single-run",
         "test-coverage": "karma start ./test-config/karma.conf.js --coverage",
         "e2e": "npm run e2e-update && npm run e2e-test",
