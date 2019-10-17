@@ -47,9 +47,10 @@ export class CandidatosPresidentesPage implements OnInit {
     });
   }
 
-  PullID(id_voto: Int16Array){
+  PullID(candidato, id_voto: Int16Array){
     this.id_Voto =  id_voto;
-    console.log("ESte el id del partido: "+this.id_Voto);
+    console.log(candidato);
+    console.log("Este el id del partido: "+this.id_Voto);
     this.voto.id_Voto = (id_voto)+'';
   }
 
