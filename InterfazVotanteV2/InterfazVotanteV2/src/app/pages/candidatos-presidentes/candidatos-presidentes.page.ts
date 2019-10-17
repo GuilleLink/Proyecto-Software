@@ -12,6 +12,7 @@ import { ToastController } from "@ionic/angular";
 })
 
 export class CandidatosPresidentesPage implements OnInit {
+  
   candidatos: TaskI[];
   id_Voto: Int16Array;
   id_centro: string;

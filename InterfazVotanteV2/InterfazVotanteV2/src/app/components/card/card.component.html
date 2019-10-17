@@ -1,9 +1,9 @@
-<ion-card class="ionicCard">
+<ion-card  button="true" id={{id}} (click)="colores()" >
   <ion-card-header>
-      <img src="{{ImageCard}}" alt="">
+      <img [ngClass]="imgcurrent" src="{{ImageCard}}" alt="{{hol}}">
   </ion-card-header>
-  <ion-card-content>
-      <ion-card-title>{{CardTitle}}</ion-card-title>
-      <ion-card-subtitle>{{CardSubtitle}}</ion-card-subtitle>
+  <ion-card-content [ngClass]="current">
+      <ion-card-title [ngClass]="currenta">{{CardTitle}}</ion-card-title>
+      <ion-card-subtitle [ngClass]="currenta">{{CardSubtitle}}</ion-card-subtitle>
   </ion-card-content>
 </ion-card>
