@@ -31,18 +31,17 @@
 
   //EMITIR VOTO------------------------------------------------------------------------------------------------------------------
   elseif ($postjson['aksi']=='emitirvoto') {
-    $id_voto = $postjson['id_Voto'];
+    //$id_voto = $postjson['id_Voto'];
     $id_centro = $postjson['id_centro'];
     $id_presidente_vicepresidente = $postjson['id_presidente_vicepresidente'];
     $id_alcalde = $postjson['id_alcalde'];
-    $id_voto = $postjson['id_Voto'];
     $id_diputados_parlacen = $postjson['id_diputados_parlacen'];
     $id_diputados_distrito= $postjson['id_diputados_distrito'];
     $id_diputados_lista = $postjson['id_diputados_lista'];
 
     $query = mysqli_query($mysqli,
-    "INSERT INTO Voto_Emitido(id_voto, id_centro, id_presidente_vicepresidente, id_alcalde, id_diputados_parlacen, id_diputados_distrito, id_diputados_lista)
-     VALUES ($id_voto,$id_centro,$id_presidente_vicepresidente,$id_alcalde,$id_diputados_parlacen,$id_diputados_distrito,$id_diputados_lista)");
+    "INSERT INTO Voto_Emitido(id_centro, id_presidente_vicepresidente, id_alcalde, id_diputados_parlacen, id_diputados_distrito, id_diputados_lista)
+     VALUES ($id_centro,$id_presidente_vicepresidente,$id_alcalde,$id_diputados_parlacen,$id_diputados_distrito,$id_diputados_lista)");
 
     if($query) $result = json_encode(array('success'=>true, 'result'=>'success'));
     else $result = json_encode(array('success'=>false, 'result'=>'error'));
