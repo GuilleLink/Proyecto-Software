@@ -8,7 +8,7 @@ export class PostProvider {
   // if you test in real device "http://localhost" change use the your IP
 
   //server: string = "http://localhost/Proyecto-Software/server_api/"; //Equipo Alejandro
-  server: string = "http://localhost/SprintII_Software_/server_api/";    //Equipo Diego
+  server: string = "http://localhost/Proyecto-Software/server_api/";     //Equipo Diego
   constructor(public http: Http) {}
 
   postData(body, file) {
