@@ -11,6 +11,7 @@ export class CardComponent implements OnInit {
   currenta;
   cont = 1;
   imgcurrent;
+  selected: boolean = false;
   @Input() hol: string;
   @Input() CardSubtitle: string;
   @Input() CardTitle: string;
@@ -25,6 +26,7 @@ export class CardComponent implements OnInit {
       this.current = "redBg"
       this.currenta = "letras"
       this.imgcurrent = "imgCambio"
+      this.selected = true;
       console.log("el valor de cont es "+this.cont)
     }
     else{
@@ -32,6 +34,7 @@ export class CardComponent implements OnInit {
       this.current = "normalBg"
       this.currenta = "letrasN"
       this.imgcurrent = "imgcurrent"
+      this.selected = false;
     }
     
   }

@@ -12,9 +12,11 @@ import { ToastController } from "@ionic/angular";
 })
 
 export class CandidatosPresidentesPage implements OnInit {
+
+  selected: boolean;
   
   candidatos: TaskI[];
-  //id_Voto: Int16Array;
+  id_Voto: Int16Array;
   id_centro: string;
   id_presidente_vicepresidente: string;
   id_alcalde: string;
@@ -23,9 +25,9 @@ export class CandidatosPresidentesPage implements OnInit {
   id_diputados_lista: string;
 
   voto = {
-    //id_Voto: '1',
+    id_Voto: '',
     id_centro: '2',
-    id_presidente_vicepresidente: '',
+    id_presidente_vicepresidente: '1',
     id_alcalde: '1',
     id_diputados_parlacen: '1',
     id_diputados_distrito: '1',
@@ -48,17 +50,17 @@ export class CandidatosPresidentesPage implements OnInit {
     });
   }
 
-  PullID(id_pres_vice: Int16Array){   
-    console.log(id_pres_vice);
-    //this.id_Voto =  candidato.id_voto;
-    //console.log("Este el id del partido: "+this.id_Voto);
-    //this.voto.id_Voto = (id_voto)+'';
-    this.voto.id_presidente_vicepresidente = (id_pres_vice)+'';
+  PullID(candidato, id_voto: Int16Array, selected){
+    this.id_Voto =  id_voto;
+    this.voto.id_Voto = (id_voto)+'';
+    console.log("el candidato es "+ candidato);
+    console.log("Este el id del partido: "+this.id_Voto);
+    console.log("aaaa "+selected)
   }
 
   async enviarDatos() {
     let body = {
-      //id_Voto: this.voto.id_Voto,
+      id_Voto: this.voto.id_Voto,
       id_centro: this.voto.id_centro,
       id_presidente_vicepresidente: this.voto.id_presidente_vicepresidente,
       id_alcalde: this.voto.id_alcalde,
