@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskDip, InfoService } from '../../services/info.service';
 
 @Component({
   selector: 'app-candidatos-parlacen',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./candidatos-parlacen.page.scss'],
 })
 export class CandidatosParlacenPage implements OnInit {
+  parlacen: TaskDip[];
 
-  constructor() { }
+  constructor(
+    private infoservice: InfoService
+  ) { }
 
   ngOnInit() {
+    this.infoservice.getAlcaldes().subscribe(res => {
+      this.parlacen = res;
+      console.log("Cadena Parlacen", this.parlacen);
+    });
   }
 
 }

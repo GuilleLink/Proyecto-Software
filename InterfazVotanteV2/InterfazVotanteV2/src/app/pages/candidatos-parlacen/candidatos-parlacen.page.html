@@ -1,9 +1,10 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>candidatos-parlacen</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header titulo="Candidatos Parlacen"></app-header>
 
 <ion-content>
-
+    <div class="candidatos">
+        <div *ngFor="let parl of parlacen">
+            <app-card
+             CardTitle="{{parl.partido}}" ImageCard="{{parl.URL}}"  button="true" id="CardPresidente" (click)="PullID(candidato.id_voto)" > </app-card>
+        </div>
+    </div>
 </ion-content>
