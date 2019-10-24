@@ -88,16 +88,16 @@ export class InfoService {
       })
     );
 
-    // this.distritoCollection = db.collection<TaskDip>('distrito/Guatemala'); // Distrito electoral
-    // this.distrito = this.distritoCollection.snapshotChanges().pipe(
-    //   map(actions =>{
-    //     return actions.map(a =>{
-    //       const data = a.payload.doc.data();
-    //       const id = a.payload.doc.id;
-    //       return {id, ...data};
-    //     });
-    //   })
-    // );
+    this.distritoCollection = db.collection<TaskDip>('distrito/Guatemala/Guatemala'); // Distrito electoral
+    this.distrito = this.distritoCollection.snapshotChanges().pipe(
+      map(actions =>{
+        return actions.map(a =>{
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return {id, ...data};
+        });
+      })
+    );
 
     this.parlacenCollection = db.collection<TaskDip>('parlacen'); // parlacen
     this.parlacen = this.parlacenCollection.snapshotChanges().pipe(
@@ -128,12 +128,12 @@ export class InfoService {
   getLista(id: string){
     return this.listaCollection.doc<TaskDip>(id).valueChanges();
   }
-  // getDistritos(){
-  //   return this.distrito;
-  // }
-  // getDistrito(id: string){
-  //   return this.distritoCollection.doc<TaskDip>(id).valueChanges();
-  // }
+  getDistritos(){
+    return this.distrito;
+  }
+  getDistrito(id: string){
+    return this.distritoCollection.doc<TaskDip>(id).valueChanges();
+  }
   getParlacens(){
     return this.parlacen;
   }
