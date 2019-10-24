@@ -19,18 +19,18 @@ export class CardComponent implements OnInit {
 
   constructor() { }
 
-  colores(){
+  colores(paso){
     this.cont+=1;
-    console.log("el valor de cont es "+this.cont)
+    //  console.log("el valor de cont es "+this.cont)
     if (this.cont % 2 == 0) {
       this.current = "redBg"
       this.currenta = "letras"
       this.imgcurrent = "imgCambio"
       this.selected = true;
-      console.log("el valor de cont es "+this.cont)
+      //console.log("el valor de cont es "+this.cont)
     }
     else{
-      console.log("entro")
+      //console.log("entro")
       this.current = "normalBg"
       this.currenta = "letrasN"
       this.imgcurrent = "imgcurrent"

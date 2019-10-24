@@ -23,6 +23,7 @@ export class CandidatosPresidentesPage implements OnInit {
   id_diputados_parlacen: string;
   id_diputados_distrito: string;
   id_diputados_lista: string;
+  cont = 1;
 
   voto = {
     id_Voto: '',
@@ -50,12 +51,29 @@ export class CandidatosPresidentesPage implements OnInit {
     });
   }
 
-  PullID(candidato, id_voto: Int16Array, selected){
-    this.id_Voto =  id_voto;
-    this.voto.id_Voto = (id_voto)+'';
-    console.log("el candidato es "+ candidato);
-    console.log("Este el id del partido: "+this.id_Voto);
-    console.log("aaaa "+selected)
+  PullID(candidato, id_voto){
+
+    console.log(candidato)
+    console.log("el id del voto es "+id_voto)
+    var elementoC = document.getElementById(id_voto);
+    console.log(elementoC)
+    console.log(elementoC.getAttribute("ng-reflect--card-title"))
+    var partido = elementoC.getAttribute("ng-reflect--card-title")
+
+    ///this.cont+=1;
+    // console.log("el valor de cont es "+this.cont)
+    /*if (this.cont % 2 == 0) {
+      this.selected = true;
+      //console.log("el valor de cont es "+this.cont)
+    }
+    else{
+      this.selected = false;
+    }*/
+    //this.id_Voto =  id_voto;
+    //this.voto.id_Voto = (id_voto)+'';
+    //console.log("el candidato es "+ candidato);
+    //console.log("Este el id del partido: "+this.id_Voto);
+    //console.log("Esta marcado "+this.selected)
   }
 
   async enviarDatos() {
