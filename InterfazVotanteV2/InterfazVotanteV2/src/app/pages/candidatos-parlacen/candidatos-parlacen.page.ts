@@ -14,7 +14,7 @@ export class CandidatosParlacenPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.infoservice.getAlcaldes().subscribe(res => {
+    this.infoservice.getParlacens().subscribe(res => {
       this.parlacen = res;
       console.log("Cadena Parlacen", this.parlacen);
     });

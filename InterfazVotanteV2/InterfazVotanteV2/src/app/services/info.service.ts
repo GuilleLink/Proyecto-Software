@@ -120,7 +120,7 @@ export class InfoService {
     return this.alcaldes;
   }
   getAlcalde(id: string){
-    return this.alcaldesCollection.doc<TaskAl>(id).valueChanges()
+    return this.alcaldesCollection.doc<TaskAl>(id).valueChanges();
   }
   getListas(){
     return this.lista;
