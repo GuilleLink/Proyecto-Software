@@ -55,21 +55,21 @@
     </ion-item>
     <ion-item>
       <ion-label>Dispositivo #1</ion-label>
-      <ion-toggle color="primary" name="D1"  (ionChange)="presentAlertD1()"  [(ngModel)]="D1Value" ></ion-toggle>
+      <ion-toggle color="primary" name="D1" (ionChange)="presentAlertD1()" [(ngModel)]="D1Value" [(ngModel)]="D1Checked"></ion-toggle>
     </ion-item>
 
     <ion-item>
       <ion-label>Dispositivo #2</ion-label>
-      <ion-toggle   color="primary" name="D2"  (ionChange)="presentAlertD2()" [(ngModel)]="D2Value" ></ion-toggle>
+      <ion-toggle   color="primary" name="D2"  (ionChange)="presentAlertD2()" [(ngModel)]="D2Value"  [(ngModel)]="D2Checked"></ion-toggle>
     </ion-item>
 
     <ion-item>
       <ion-label>Dispositivo #3</ion-label>
-      <ion-toggle color="primary" name="D3" (ionChange)="presentAlertD3()" [(ngModel)]="D3Value"></ion-toggle>
+      <ion-toggle color="primary" name="D3" (ionChange)="presentAlertD3()" [(ngModel)]="D3Value"  [(ngModel)]="D3Checked"></ion-toggle>
     </ion-item>
     <ion-item>
       <ion-label>Dispositivo #4</ion-label>
-      <ion-toggle color="primary" name="D4"  (ionChange)="presentAlertD4()" [(ngModel)]="D4Value"></ion-toggle>
+      <ion-toggle color="primary" name="D4"  (ionChange)="presentAlertD4()" [(ngModel)]="D4Value"  [(ngModel)]="D4Checked"></ion-toggle>
     </ion-item>
   </ion-list>
 </ion-content>

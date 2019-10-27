@@ -28,6 +28,22 @@
   	echo $result;
 
   }
+  //AZTUALIZAR ESTADO DE DISPOSITIVO------------------------------------------------------------------------------------------------------------------
+  elseif ($postjson['aksi']=='actualizardispositivo') {
+    $id_dispositivo = $postjson['Dnum'];
+    $status_dispositivo = $postjson['DValue'];
+
+    $query = mysqli_query($mysqli,
+    "UPDATE TabletStatus
+    SET StatusDispositivo = $status_dispositivo
+    WHERE Id_Dispositivo = $id_dispositivo");
+
+    if($query) $result = json_encode(array('success'=>true, 'result'=>'success'));
+    else $result = json_encode(array('success'=>false, 'result'=>'error'));
+
+    echo $result;
+  }
+  
 
   //EMITIR VOTO------------------------------------------------------------------------------------------------------------------
   elseif ($postjson['aksi']=='emitirvoto') {
