@@ -22,7 +22,7 @@ export class CandidatosParlacenPage implements OnInit {
     });
   }
   async enviarDatos() {
-    //this.router.navigate(["/candidatos-listanacional"]); ///Navegacion hacia alcaldes prueba
+    this.router.navigate(["/candidatos-distritoelectoral"]); ///Navegacion hacia alcaldes prueba
   }
 
 }
