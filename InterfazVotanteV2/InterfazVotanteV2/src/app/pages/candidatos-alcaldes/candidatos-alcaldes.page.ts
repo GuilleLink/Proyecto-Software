@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskAl, InfoService } from '../../services/info.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from "@angular/router";
 import { Storage } from '@ionic/Storage';
 import { PostProvider } from "../../../providers/post-provider";
 import { ToastController } from "@ionic/angular";
@@ -16,7 +16,8 @@ export class CandidatosAlcaldesPage implements OnInit {
   alcaldes: TaskAl[];
 
   constructor(
-    private infoservice: InfoService
+    private infoservice: InfoService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -24,6 +25,9 @@ export class CandidatosAlcaldesPage implements OnInit {
       this.alcaldes = res;
       console.log("Cadena alcaldes", this.alcaldes);
     });
+  }
+  async enviarDatos() {
+    this.router.navigate(["/candidatos-listanacional"]); ///Navegacion hacia alcaldes prueba
   }
 
 }

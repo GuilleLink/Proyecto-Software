@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskDip, InfoService } from '../../services/info.service';
+import { Router, RouterModule } from "@angular/router";
 
 @Component({
   selector: 'app-candidatos-listanacional',
@@ -11,7 +12,8 @@ export class CandidatosListanacionalPage implements OnInit {
   diputados: TaskDip[];
 
   constructor(
-    private infoservice: InfoService
+    private infoservice: InfoService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -20,6 +22,9 @@ export class CandidatosListanacionalPage implements OnInit {
       this.diputados = res;
       console.log("Cadena Diputados", this.diputados);
     });
+  }
+  async enviarDatos() {
+    this.router.navigate(["/candidatos-parlacen"]); ///Navegacion hacia alcaldes prueba
   }
 
 }

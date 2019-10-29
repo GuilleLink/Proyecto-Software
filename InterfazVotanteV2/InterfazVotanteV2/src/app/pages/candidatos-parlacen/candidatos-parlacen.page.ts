@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskDip, InfoService } from '../../services/info.service';
+import { Router, RouterModule } from "@angular/router";
 
 @Component({
   selector: 'app-candidatos-parlacen',
@@ -10,7 +11,8 @@ export class CandidatosParlacenPage implements OnInit {
   parlacen: TaskDip[];
 
   constructor(
-    private infoservice: InfoService
+    private infoservice: InfoService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -18,6 +20,9 @@ export class CandidatosParlacenPage implements OnInit {
       this.parlacen = res;
       console.log("Cadena Parlacen", this.parlacen);
     });
+  }
+  async enviarDatos() {
+    //this.router.navigate(["/candidatos-listanacional"]); ///Navegacion hacia alcaldes prueba
   }
 
 }

@@ -1,4 +1,4 @@
-<app-header titulo="Candidatos Presidentes"></app-header>
+<app-header titulo="Candidatos Lista Nacional"></app-header>
 
 <ion-content>
     <div class="candidatos">
@@ -6,4 +6,5 @@
             <app-card  CardTitle="{{diputado.partido}}" ImageCard="{{diputado.URL}}"  id="{{diputado.id_voto}}" (click)="PullID(candidato, candidato.id_voto)"> </app-card>
         </div>
     </div>
+    <ion-button (click)="enviarDatos()">Siguiente</ion-button>
 </ion-content>
