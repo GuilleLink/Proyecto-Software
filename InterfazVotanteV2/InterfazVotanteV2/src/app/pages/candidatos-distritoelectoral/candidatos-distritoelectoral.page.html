@@ -1,10 +1,13 @@
 <app-header titulo="Candidatos Distrito Electoral"></app-header>
+<ion-header>
+    <ion-progress-bar color = "primary" value = "0.16" buffer="0.5"></ion-progress-bar>
+</ion-header>
 
 <ion-content>
     <div class="candidatos">
-        <div *ngFor="let alcalde of alcaldes">
-            <app-card CardSubtitle="{{alcalde.alcalde}}" CardTitle="{{alcalde.partido}}" ImageCard="{{alcalde.URL}}"  button="true" id="CardPresidente" (click)="PullID(candidato.id_voto)" > </app-card>
+        <div *ngFor="let candidato of candidatos" class="cards">
+            <app-card title="{{selected}}" CardSubtitle="{{candidato.presidente}}" CardTitle="{{candidato.partido}}" ImageCard="{{candidato.URL}}"  id="{{candidato.id_voto}}" (click)="PullID(candidato, candidato.id_voto)"> </app-card>
         </div>
     </div>
-    <ion-button (click)="enviarDatos()">Siguiente</ion-button>
+    <ion-button (click)="enviarDatos()">FIN</ion-button>
 </ion-content>
