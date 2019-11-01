@@ -12,7 +12,7 @@ import { ComponentsModule } from './components/components.module';
 
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
-import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestoreModule} from '@angular/fire/firestore';
 
 import {HttpModule} from '@angular/http';
 import { PostProvider } from '../providers/post-provider';
@@ -31,7 +31,6 @@ import { IonicStorageModule } from '@ionic/Storage';
     StatusBar,
     PostProvider, //MySQL
     SplashScreen,
-    AngularFirestore,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
