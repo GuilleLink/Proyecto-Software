@@ -20,16 +20,6 @@ export class HomePage {
   D3Value = false;
   D4Value = false;
 
-  D1NotChecked = false;
-  D2NotChecked = false;
-  D3NotChecked = false;
-  D4NotChecked = false;
-
-  D1Value2 =  false;
-  D2Value2 = false;
-  D3Value2 = false;
-  D4Value2 = false;
-
   dispositivo = {
     DValue: '0',
     Dnum: '0'
