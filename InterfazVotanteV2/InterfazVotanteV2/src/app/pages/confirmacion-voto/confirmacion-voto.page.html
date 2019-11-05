@@ -1,9 +1,16 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>confirmacion-voto</ion-title>
-  </ion-toolbar>
+  <app-header titulo="Confirmación de Voto"></app-header>
+  <ion-progress-bar color = "secondary" value = "1" buffer="0.5"></ion-progress-bar>
 </ion-header>
 
 <ion-content>
-
+  <div class="candidatos">
+      <div class="cards">
+          <app-card CardSubtitle="{{Pname}}" CardTitle="{{Ppartido}}" ImageCard="{{PURL}}"  id="{{PidVoto}}"> </app-card>
+      </div>
+      <div class="cards">
+        <app-card CardSubtitle="{{Alname}}" CardTitle="{{Alpartido}}" ImageCard="{{AlURL}}"  id="{{AlidVoto}}"> </app-card>
+    </div>
+  </div>
+  <!-- <ion-button (click)="enviarDatos()">Siguiente</ion-button> -->
 </ion-content>
