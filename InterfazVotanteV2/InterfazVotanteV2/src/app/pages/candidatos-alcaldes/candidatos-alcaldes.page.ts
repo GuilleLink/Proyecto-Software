@@ -15,6 +15,7 @@ import { ToastController } from "@ionic/angular";
 export class CandidatosAlcaldesPage implements OnInit {
   alcaldes: TaskAl[];
   id_presidente: string;
+  id_selec: string;
 
   constructor(
     private infoservice: InfoService,
@@ -42,8 +43,15 @@ export class CandidatosAlcaldesPage implements OnInit {
     });
   }
 
+
+  PullID(id){
+    console.log("El id seleccionado es"+id);    
+    //this.router.navigate(['candidatos-alcaldes',id]);
+    this.id_selec = id;
+  }
+
   async enviarDatos() {
-    this.router.navigate(["/candidatos-listanacional"]); ///Navegacion hacia alcaldes prueba
+    this.router.navigate(['candidatos-listanacional/' + this.id_presidente + '/' + this.id_selec]); ///Navegacion hacia alcaldes prueba
   }
 
 }
