@@ -21,7 +21,7 @@ describe('CardNullComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Guarda la card seleccionada', () => {
     expect(component).toBeTruthy();
   });
 });

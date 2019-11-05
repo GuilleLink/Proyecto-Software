@@ -21,7 +21,7 @@ describe('CardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Debe de guardar la variable de la card del voto', () => {
     expect(component).toBeTruthy();
   });
 });
