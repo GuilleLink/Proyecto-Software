@@ -1,9 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { TaskI, InfoService } from "../../services/info.service";
-import { Router, RouterModule } from "@angular/router";
+import { Router, RouterModule, ActivatedRoute } from "@angular/router";
 import { Storage } from "@ionic/Storage";
 import { PostProvider } from "../../../providers/post-provider";
-import { ToastController } from "@ionic/angular";
+import { ToastController } from '@ionic/angular';
+import { ConfirmacionVotoPage } from '../confirmacion-voto/confirmacion-voto.page';
+
 
 @Component({
   selector: "app-candidatos-presidentes",
@@ -24,6 +26,7 @@ export class CandidatosPresidentesPage implements OnInit {
   id_diputados_distrito: string;
   id_diputados_lista: string;
   cont = 1;
+  id_selec: string;
 
   voto = {
     id_Voto: '',
@@ -51,14 +54,17 @@ export class CandidatosPresidentesPage implements OnInit {
     });
   }
 
-  PullID(candidato, id_voto){
+  PullID(candidato, id_voto,id){
 
     console.log(candidato)
-    console.log("el id del voto es "+id_voto)
+    console.log("el id del voto es "+id_voto);
+    console.log("El id seleccionado es"+id);
     var elementoC = document.getElementById(id_voto);
     console.log(elementoC)
-    console.log(elementoC.getAttribute("ng-reflect--card-title"))
-    var partido = elementoC.getAttribute("ng-reflect--card-title")
+    console.log(elementoC.getAttribute("ng-reflect--card-title"));
+    var partido = elementoC.getAttribute("ng-reflect--card-title");
+    //this.router.navigate(['candidatos-alcaldes',id]);
+    this.id_selec = id;
 
     ///this.cont+=1;
     // console.log("el valor de cont es "+this.cont)
@@ -75,6 +81,7 @@ export class CandidatosPresidentesPage implements OnInit {
     //console.log("Este el id del partido: "+this.id_Voto);
     //console.log("Esta marcado "+this.selected)
   }
+  
 
   async enviarDatos() {
     let body = {
@@ -94,7 +101,7 @@ export class CandidatosPresidentesPage implements OnInit {
       var alertpesan = data.msg;
       if (data.success) {
         this.storage.set("session_storage", data.result);
-        this.router.navigate(["/candidatos-alcaldes"]); ///Navegacion hacia alcaldes prueba
+        this.router.navigate(['candidatos-alcaldes/' + this.id_selec]); ///Navegacion hacia alcaldes prueba
         const toast = await this.toastCtrl.create({
           message: "Su voto ha sido emitido exitosamente",
           duration: 2000

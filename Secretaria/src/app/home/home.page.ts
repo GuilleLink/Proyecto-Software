@@ -67,7 +67,7 @@ export class HomePage {
         };
         this.postPvdr.postData(body, 'proses-api.php').subscribe(datauser => {
           console.log(datauser.success)
-          this.dPiValido = datauser.success
+          this.dPiValido = datauser.success;
           resolve(true);
         });
       });
