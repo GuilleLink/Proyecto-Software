@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Ingresando un DPI malo.</description>
+   <name>Login_IngresoDPI Incorrecto</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>e742f54a-c991-41fd-a70f-fd5739185694</testCaseGuid>
+</TestCaseEntity>

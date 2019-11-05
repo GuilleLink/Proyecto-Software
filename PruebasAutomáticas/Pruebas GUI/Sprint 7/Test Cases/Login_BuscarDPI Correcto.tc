@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Se Logea, luego busca un DPI que si existe y permanece en esa pantalla</description>
+   <name>Login_BuscarDPI Correcto</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>a0e0ac3d-783c-4095-9c6d-fbe5ee04939b</testCaseGuid>
+</TestCaseEntity>

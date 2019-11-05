@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Se logea, se busca un buen DPI y luego se retorna a la página normal de busqueda.</description>
+   <name>Login_BuscarDPICorrecto_Retorno</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>b7fbf3e1-623c-4f0d-b218-4b64db2ff6ef</testCaseGuid>
+</TestCaseEntity>
