@@ -5,9 +5,9 @@
 
 <ion-content>
     <div class="candidatos">
-        <div *ngFor="let candidato of candidatos" class="cards">
-            <app-card title="{{selected}}" CardSubtitle="{{candidato.presidente}}" CardTitle="{{candidato.partido}}" ImageCard="{{candidato.URL}}"  id="{{candidato.id_voto}}" (click)="PullID(candidato, candidato.id_voto)"> </app-card>
+        <div *ngFor="let distrito of distritos" class="cards">
+            <app-card CardTitle="{{distrito.partido}}" ImageCard="{{distrito.URL}}"  id="{{distrito.id_voto}}" (click)="PullID(distrito.id)"> </app-card>
         </div>
     </div>
-    <ion-button (click)="enviarDatos()">FIN</ion-button>
+    <ion-button (click)="enviarDatos()">Siguiente</ion-button>
 </ion-content>

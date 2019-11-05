@@ -25,7 +25,7 @@ export class CandidatosDistritoelectoralPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.infoservice.getListas().subscribe(res => {
+    this.infoservice.getDistritos().subscribe(res => {
       //console.log("Candidatos", res);
       this.distritos = res;
       console.log("Cadena Distritos", this.distritos);
@@ -42,13 +42,12 @@ export class CandidatosDistritoelectoralPage implements OnInit {
     });
   }
   PullID(id){
-    console.log("El id seleccionado es"+id);    
-    //this.router.navigate(['candidatos-alcaldes',id]);
+    console.log("El id seleccionado es"+id);
     this.id_selec = id;
   }
 
   async enviarDatos() {
-    console.log('hehe')
+    this.router.navigate(['candidatos-parlacen/' + this.id_presidente + '/' + this.id_alcalde + '/' + this.id_lista+'/'+this.id_selec]); ///Navegacion hacia alcaldes prueba
   }
 
 
