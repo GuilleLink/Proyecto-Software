@@ -21,7 +21,7 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Tiene el nombre de la boleta', () => {
     expect(component).toBeTruthy();
   });
 });

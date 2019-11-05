@@ -21,7 +21,7 @@ describe('InicioPage', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Debe de acceder a la base de datos', () => {
     expect(component).toBeTruthy();
   });
 });
