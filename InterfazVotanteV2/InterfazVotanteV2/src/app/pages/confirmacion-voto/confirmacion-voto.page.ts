@@ -9,11 +9,29 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ConfirmacionVotoPage implements OnInit {
 
-  constructor(public activeRoute:ActivatedRoute) { }
+
+  id_presidente: string;
+  id_alcalde: string;
+  id_lista: string;
+  id_distrito: string;
+  id_parlacen: string;
+
+  constructor(private actRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    let datapresi = this.activeRoute.snapshot.paramMap.get('presidente');
-    console.log(datapresi);
+  }
+
+  ionViewWillEnter(){
+    
+    this.actRoute.params.subscribe((data: any) =>{
+      this.id_presidente = data.presidente;
+      this.id_alcalde = data.alcalde;
+      this.id_lista = data.lista;
+      this.id_distrito =  data.distrito;
+      this.id_parlacen = data.parlacen;
+      console.log(data);
+    });
   }
 
 }
+
