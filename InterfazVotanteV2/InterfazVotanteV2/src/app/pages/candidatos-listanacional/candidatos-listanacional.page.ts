@@ -12,6 +12,7 @@ export class CandidatosListanacionalPage implements OnInit {
   diputados: TaskDip[];
   id_presidente: string;
   id_alcalde: string;
+  id_selec: string;
 
   constructor(
     private infoservice: InfoService,
@@ -36,10 +37,14 @@ export class CandidatosListanacionalPage implements OnInit {
     });
   }
 
-
+  PullID(id){
+    console.log("El id seleccionado es"+id);    
+    //this.router.navigate(['candidatos-alcaldes',id]);
+    this.id_selec = id;
+  }
 
   async enviarDatos() {
-    this.router.navigate(["/candidatos-parlacen"]); ///Navegacion hacia alcaldes prueba
+    this.router.navigate(['candidatos-distritoelectoral/' + this.id_presidente + '/' + this.id_alcalde + '/' + this.id_selec]); ///Navegacion hacia alcaldes prueba
   }
 
 }

@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'candidatos-presidentes', loadChildren: './pages/candidatos-presidentes/candidatos-presidentes.module#CandidatosPresidentesPageModule' },
   { path: 'candidatos-alcaldes/:presidente', loadChildren: './pages/candidatos-alcaldes/candidatos-alcaldes.module#CandidatosAlcaldesPageModule' },
   { path: 'candidatos-listanacional/:presidente/:alcalde', loadChildren: './pages/candidatos-listanacional/candidatos-listanacional.module#CandidatosListanacionalPageModule' },
-  { path: 'candidatos-distritoelectoral', loadChildren: './pages/candidatos-distritoelectoral/candidatos-distritoelectoral.module#CandidatosDistritoelectoralPageModule' },
+  { path: 'candidatos-distritoelectoral/:presidente/:alcalde/:lista', loadChildren: './pages/candidatos-distritoelectoral/candidatos-distritoelectoral.module#CandidatosDistritoelectoralPageModule' },
   { path: 'candidatos-parlacen', loadChildren: './pages/candidatos-parlacen/candidatos-parlacen.module#CandidatosParlacenPageModule' },
   { path: 'confirmacion-voto', loadChildren: './pages/confirmacion-voto/confirmacion-voto.module#ConfirmacionVotoPageModule' }
 

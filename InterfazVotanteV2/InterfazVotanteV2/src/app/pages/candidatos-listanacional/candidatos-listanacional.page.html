@@ -6,7 +6,7 @@
 <ion-content>
     <div class="candidatos">
         <div *ngFor="let diputado of diputados" class="cards">
-            <app-card  CardTitle="{{diputado.partido}}" ImageCard="{{diputado.URL}}"  id="{{diputado.id_voto}}" (click)="PullID(candidato, candidato.id_voto)"> </app-card>
+            <app-card  CardTitle="{{diputado.partido}}" ImageCard="{{diputado.URL}}"  id="{{diputado.id_voto}}" (click)="PullID(diputado.id)"> </app-card>
         </div>
     </div>
     <ion-button (click)="enviarDatos()">Siguiente</ion-button>
