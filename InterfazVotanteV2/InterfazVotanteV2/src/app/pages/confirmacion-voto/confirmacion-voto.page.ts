@@ -26,6 +26,21 @@ export class ConfirmacionVotoPage implements OnInit {
   Alpartido: string;
   AlURL: string;
   AlidVoto: Int16Array;
+  lista: TaskDip;
+  lisname: string;
+  lispartido: string;
+  lisURL: string;
+  lisidVoto: Int16Array;
+  distrito: TaskDip;
+  disname: string;
+  dispartido: string;
+  disURL: string;
+  disidVoto: Int16Array;
+  parlacen: TaskDip;
+  parlacenname: string;
+  parlacenpartido: string;
+  parlacenURL: string;
+  parlacenidVoto: Int16Array;
 
   constructor(private actRoute: ActivatedRoute,
     private infoservice: InfoService) { }
@@ -44,12 +59,37 @@ export class ConfirmacionVotoPage implements OnInit {
     });
     // console.log("llego a la parte de hacer la card");
     // console.log(this.id_presidente);
+    this.infoservice.getCandidato(this.id_presidente).subscribe(res =>{
+      this.presidente = res;
+      this.Pname = this.presidente.presidente;
+      this.Ppartido = this.presidente.partido;
+      this.PURL = this.presidente.URL;
+      this.PidVoto = this.presidente.id_voto;
+    });
     this.infoservice.getAlcalde(this.id_alcalde).subscribe(res =>{
       this.alcalde = res;
       this.Alname = this.alcalde.alcalde;
       this.Alpartido = this.alcalde.partido;
       this.AlURL = this.alcalde.URL;
       this.AlidVoto = this.alcalde.id_voto;
+    });
+    this.infoservice.getLista(this.id_lista).subscribe(res =>{
+      this.lista = res;
+      this.lispartido = this.lista.partido;
+      this.lisURL = this.lista.URL;
+      this.lisidVoto = this.lista.id_voto;
+    });
+    this.infoservice.getDistrito(this.id_distrito).subscribe(res =>{
+      this.distrito = res;
+      this.dispartido = this.distrito.partido;
+      this.disURL = this.distrito.URL;
+      this.disidVoto = this.distrito.id_voto;
+    });
+    this.infoservice.getParlacen(this.id_parlacen).subscribe(res =>{
+      this.parlacen = res;
+      this.parlacenpartido = this.parlacen.partido;
+      this.parlacenURL = this.parlacen.URL;
+      this.parlacenidVoto = this.parlacen.id_voto;
     });
   }
 
