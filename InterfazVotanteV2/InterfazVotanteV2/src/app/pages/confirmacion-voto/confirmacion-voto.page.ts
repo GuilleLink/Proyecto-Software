@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { InfoService, TaskI, TaskAl, TaskDip } from '../../services/info.service';
+import { AlertController } from '@ionic/angular';
+import { Storage } from '@ionic/Storage';
+import { PostProvider } from '../../../providers/post-provider';
+import { ToastController } from '@ionic/angular';
+
 
 
 @Component({
@@ -42,8 +47,14 @@ export class ConfirmacionVotoPage implements OnInit {
   parlacenURL: string;
   parlacenidVoto: Int16Array;
 
-  constructor(private actRoute: ActivatedRoute,
-    private infoservice: InfoService) { }
+  constructor(
+    private actRoute: ActivatedRoute,
+    private infoservice: InfoService,
+    alertController: AlertController,
+    private postPvdr: PostProvider,
+    public storage: Storage,
+    public toastCtrl: ToastController
+    ) { }
   
 
   //const promise = new Promise()  
@@ -91,6 +102,45 @@ export class ConfirmacionVotoPage implements OnInit {
       this.parlacenURL = this.parlacen.URL;
       this.parlacenidVoto = this.parlacen.id_voto;
     });
+  }
+  async enviarDatos() {
+    let body = {
+      //id_Voto: 1,
+      id_centro: 1,
+      id_presidente_vicepresidente: this.presidente.id_voto,
+      id_alcalde: this.alcalde.id_voto,
+      id_diputados_parlacen: this.parlacen.id_voto,
+      id_diputados_distrito: this.distrito.id_voto,
+      id_diputados_lista: this.lista.id_voto,
+      aksi: "emitirvoto"
+    };
+    console.log(body);
+    this.postPvdr.postData(body, 'proses-api.php').subscribe(
+      async data => {
+        // Llamada del metodo postData en post-provider, recibe como parametros
+      // El cuerpo con los datos de la tabla a consultar y el nombre de 
+      // proses-api.php donde se realizan los queris.
+      var alertpesan = data.msg;
+      if (data.success) {
+        this.storage.set("session_storage", data.result);
+        // this.router.navigate(['candidatos-alcaldes/' + this.id_selec]); ///Navegacion hacia alcaldes prueba
+        const toast = await this.toastCtrl.create({
+          message: "Su voto ha sido emitido exitosamente",
+          duration: 2000
+        });
+        toast.present();
+        //this.usuario.Nombre = "";
+        //this.usuario.password = "";
+        console.log(data);
+      } else {
+        const toast = await this.toastCtrl.create({
+          message: alertpesan,
+          duration: 2000
+        });
+        toast.present();
+      }
+    });
+    
   }
 
 }
