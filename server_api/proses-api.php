@@ -216,15 +216,22 @@
     echo $result;
   }
   //---------------------------------------------------------------------------------------------------------------------------------
-  /*elseif($postjson['aksi']=="register"){
-    $password = md5($postjson['password']);
-    $query = mysqli_query($mysqli, "INSERT INTO master_user SET
-      username = '$postjson[username]',
-      password = '$password',
-      status   = 'y'
+  elseif($postjson['aksi']=='StatusDispositivo'){
+
+    $data = array();
+    $query = mysqli_query($mysqli, 
+    "SELECT *
+    FROM TabletStatus
     ");
-    if($query) $result = json_encode(array('success'=>true));
-    else $result = json_encode(array('success'=>false, 'msg'=>'error, please try again'));
-    echo $result;
-  }*/
+  	while($row = mysqli_fetch_array($query)){
+  		$data[] = array(
+  			'Id_Dispositivo' => $row['Id_Dispositivo'],
+  			'StatusDispositivo' => $row['StatusDispositivo'],
+  		);
+  	}
+  	if($query) $result = json_encode(array('success'=>true, 'result'=>$data));
+  	else $result = json_encode(array('success'=>false));
+  	echo $result;
+  }
+
 ?>
