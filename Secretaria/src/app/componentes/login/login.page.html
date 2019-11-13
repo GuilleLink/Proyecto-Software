@@ -11,17 +11,17 @@
     <form #formulario="ngForm" (ngSubmit)="onSubmitTemplate()">
         <ion-item color='light2'>
             <ion-label color='light2' position="floating">Username</ion-label>
-            <ion-input color='light2' name="Nombre" maxlength="20" type="text" [(ngModel)]="usuario.Nombre" required></ion-input>
+            <ion-input color='light2' name="Nombre" maxlength="20" type="text" [(ngModel)]="usuario.Nombre" id="NombreUsuario" required></ion-input>
         </ion-item>
 
 
         <ion-item color='light2'>
             <ion-label color='light2' position="floating">Password</ion-label>
-            <ion-input color='light2' name="password" type="password" [(ngModel)]="usuario.password" required></ion-input>
+            <ion-input color='light2' name="password" type="password" [(ngModel)]="usuario.password" id="PasswordLog" required></ion-input>
         </ion-item>
 
         <br>
-        <ion-button class="boton" (click)="prosesLogin()" expand="block" type="submit" [disabled]="formulario.invalid"> Ingresar </ion-button>
+        <ion-button class="boton" (click)="prosesLogin()" expand="block" type="submit" [disabled]="formulario.invalid" id="BotonLog" >Ingresar</ion-button>
     </form>
 </ion-content>
 

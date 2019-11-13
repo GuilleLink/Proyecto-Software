@@ -19,9 +19,10 @@ export class InicioPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.comprobar()
+    this.Comprobar()
   }
-  comprobar(){
+
+  Comprobar(){
     console.log("hola HEHE")
     return new Promise(resolve => {
   		let body = {
@@ -45,8 +46,10 @@ export class InicioPage implements OnInit {
         }
         else{
           console.log("libre")
+          this.boton = document.getElementById("boton")
+          this.boton.setAttribute("disabled", "False"); 
         }
-        console.log(document.getElementById("boton"))
+        //console.log(document.getElementById("boton"))
         
 
   			resolve(true);

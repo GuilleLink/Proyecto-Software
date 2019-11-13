@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth} from '@angular/fire/auth';
-import { promise } from 'protractor';
-import { reject } from 'q';
+//import { promise } from 'protractor';
+//import { reject } from 'q';
+
 
 @Injectable({
   providedIn: 'root'

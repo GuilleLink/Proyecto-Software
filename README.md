@@ -1,6 +1,6 @@
 <h1 align="center">
 <br>
-  <img src="https://static.scientificamerican.com/sciam/cache/file/CF393A78-1DF6-4D70-BF862AC7CA0ACC02_source.jpg" alt="Voto" width="332"> 
+  <img src="https://static.scientificamerican.com/sciam/cache/file/CF393A78-1DF6-4D70-BF862AC7CA0ACC02_source.jpg" alt="Voto" width="556"> 
 <br>
 <br>Voto Electronico
 </h1>
