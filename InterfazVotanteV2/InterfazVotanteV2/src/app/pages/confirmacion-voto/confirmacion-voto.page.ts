@@ -48,7 +48,7 @@ export class ConfirmacionVotoPage implements OnInit {
   constructor(
     private actRoute: ActivatedRoute,
     private infoservice: InfoService,
-    alertController: AlertController,
+    public alertController: AlertController,
     private postPvdr: PostProvider,
     public storage: Storage,
     public toastCtrl: ToastController,
@@ -102,6 +102,31 @@ export class ConfirmacionVotoPage implements OnInit {
       this.parlacenidVoto = this.parlacen.id_voto;
     });
   }
+
+  async alertaConfirmar(){
+    const alert = await this.alertController.create({
+      header: 'Esta apunto de enviar su votos',
+      message: '<strong>¿Está seguro de enviarlos?</strong>',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Esta cancelando');
+          }
+        }, {
+          text: 'Confirmar',
+          handler : () => {
+            this.enviarDatos();
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+
   async enviarDatos() {
     let body = {
       id_Voto: "",
