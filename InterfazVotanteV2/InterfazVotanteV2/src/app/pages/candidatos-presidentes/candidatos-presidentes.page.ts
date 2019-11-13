@@ -30,8 +30,8 @@ export class CandidatosPresidentesPage implements OnInit {
 
   voto = {
     id_Voto: '',
-    id_centro: '2',
-    id_presidente_vicepresidente: '1',
+    id_centro: '3',
+    id_presidente_vicepresidente: '2',
     id_alcalde: '1',
     id_diputados_parlacen: '1',
     id_diputados_distrito: '1',
@@ -65,6 +65,7 @@ export class CandidatosPresidentesPage implements OnInit {
     var partido = elementoC.getAttribute("ng-reflect--card-title");
     //this.router.navigate(['candidatos-alcaldes',id]);
     this.id_selec = id;
+    console.log(this.id_selec)
 
     ///this.cont+=1;
     // console.log("el valor de cont es "+this.cont)
@@ -84,40 +85,41 @@ export class CandidatosPresidentesPage implements OnInit {
   
 
   async enviarDatos() {
-    let body = {
-      id_Voto: this.voto.id_Voto,
-      id_centro: this.voto.id_centro,
-      id_presidente_vicepresidente: this.voto.id_presidente_vicepresidente,
-      id_alcalde: this.voto.id_alcalde,
-      id_diputados_parlacen: this.voto.id_diputados_parlacen,
-      id_diputados_distrito: this.voto.id_diputados_distrito,
-      id_diputados_lista: this.voto.id_diputados_lista,
-      aksi: "emitirvoto"
-    };
+    this.router.navigate(['candidatos-alcaldes/' + this.id_selec]);
+    // let body = {
+    //   id_Voto: this.voto.id_Voto,
+    //   id_centro: this.voto.id_centro,
+    //   id_presidente_vicepresidente: this.voto.id_presidente_vicepresidente,
+    //   id_alcalde: this.voto.id_alcalde,
+    //   id_diputados_parlacen: this.voto.id_diputados_parlacen,
+    //   id_diputados_distrito: this.voto.id_diputados_distrito,
+    //   id_diputados_lista: this.voto.id_diputados_lista,
+    //   aksi: "emitirvoto"
+    // };
 
-    this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{ //Llamada del metodo postData en post-provider, recibe como parametros
-                                                                            //El cuerpo con los datos de la tabla a consultar y el nombre de 
-                                                                            //proses-api.php donde se realizan los queris.
-      var alertpesan = data.msg;
-      if (data.success) {
-        this.storage.set("session_storage", data.result);
-        this.router.navigate(['candidatos-alcaldes/' + this.id_selec]); ///Navegacion hacia alcaldes prueba
-        const toast = await this.toastCtrl.create({
-          message: "Su voto ha sido emitido exitosamente",
-          duration: 2000
-        });
-        toast.present();
-        //this.usuario.Nombre = "";
-        //this.usuario.password = "";
-        console.log(data);
-      } else {
-        const toast = await this.toastCtrl.create({
-          message: alertpesan,
-          duration: 2000
-        });
-        toast.present();
-      }
-    });
+    // this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{ //Llamada del metodo postData en post-provider, recibe como parametros
+    //                                                                         //El cuerpo con los datos de la tabla a consultar y el nombre de 
+    //                                                                         //proses-api.php donde se realizan los queris.
+    //   var alertpesan = data.msg;
+    //   if (data.success) {
+    //     this.storage.set("session_storage", data.result);
+    //     this.router.navigate(['candidatos-alcaldes/' + this.id_selec]); ///Navegacion hacia alcaldes prueba
+    //     const toast = await this.toastCtrl.create({
+    //       message: "Su voto ha sido emitido exitosamente",
+    //       duration: 2000
+    //     });
+    //     toast.present();
+    //     //this.usuario.Nombre = "";
+    //     //this.usuario.password = "";
+    //     console.log(data);
+    //   } else {
+    //     const toast = await this.toastCtrl.create({
+    //       message: alertpesan,
+    //       duration: 2000
+    //     });
+    //     toast.present();
+    //   }
+    // });
     
   }
 

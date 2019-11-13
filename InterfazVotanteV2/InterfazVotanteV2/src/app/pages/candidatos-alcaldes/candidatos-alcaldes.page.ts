@@ -45,7 +45,8 @@ export class CandidatosAlcaldesPage implements OnInit {
 
 
   PullID(id){
-    console.log("El id seleccionado es"+id);    
+    console.log("El id seleccionado es"+id); 
+    console.log("Habia votado de presidente por "+ this.id_presidente)   
     //this.router.navigate(['candidatos-alcaldes',id]);
     this.id_selec = id;
   }
