@@ -51,7 +51,8 @@ export class ConfirmacionVotoPage implements OnInit {
     alertController: AlertController,
     private postPvdr: PostProvider,
     public storage: Storage,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public router: Router
     ) { }
   
 
@@ -119,6 +120,7 @@ export class ConfirmacionVotoPage implements OnInit {
       //proses-api.php donde se realizan los queris.
       if (data.success) {
         this.storage.set("session_storage", data.result);
+        this.router.navigate(['inicio']);
         const toast = await this.toastCtrl.create({
         message: "Su voto ha sido emitido exitosamente",
         duration: 2000
