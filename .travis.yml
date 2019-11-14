@@ -1,6 +1,20 @@
+#PHP
+language: php
+php:
+  - "5.4"
+
+#Node
 language: node_js
+before_script:
+  -npm install
 node_js: 
   - "stable"
 cache: bundler
   directories:
     - "node_modules"
+jobs:
+  include:
+    file:
+        - "./InterfazVotanteV2/InterfazVotanteV2/src"
+      script:
+        - npm run test
