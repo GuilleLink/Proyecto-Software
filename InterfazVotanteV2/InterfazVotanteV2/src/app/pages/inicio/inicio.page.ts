@@ -3,27 +3,40 @@ import { Router, RouterModule } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Storage } from '@ionic/Storage';
 import { PostProvider } from '../../../providers/post-provider';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
 })
+
+
 export class InicioPage implements OnInit {
 
   status: number;
+  public coso: boolean;
   boton: any;
+  subscription : Subscription;
 
   constructor(
-    private postPvdr: PostProvider
+    private postPvdr: PostProvider,
+    public router: Router
   ) { }
 
   ngOnInit() {
-    this.Comprobar()
+    //this.Comprobar()
+    this.coso = false;
+    const source = interval(1000);
+    this.subscription = source.subscribe(val => this.Comprobar());
   }
 
   Comprobar(){
-    console.log("hola HEHE")
+    // this.boton = document.getElementById("inicio");
+    // // this.boton.setAttribute("disabled",!this.coso);
+    // this.coso = !this.coso;
+    // console.log(this.coso);
+    // console.log("hola HEHE")
     return new Promise(resolve => {
   		let body = {
   			aksi : 'StatusDispositivo'
@@ -37,24 +50,26 @@ export class InicioPage implements OnInit {
         // console.log(data.result)
         // console.log(data.result[0])
         // console.log(data.result[0].StatusDispositivo)
-        this.status = data.result[0].StatusDispositivo
-        console.log(this.status)
+        this.boton = document.getElementById("inicio");
+        this.status = data.result[0].StatusDispositivo;
         if (this.status == 0) {
-          console.log("bloquearse")
-          this.boton = document.getElementById("boton")
-          this.boton.setAttribute("disabled", "True"); 
+          this.coso = true;
+          //this.boton.setAttribute("disabled", "True"); 
         }
         else{
-          console.log("libre")
-          this.boton = document.getElementById("boton")
-          this.boton.setAttribute("disabled", "False"); 
+          this.coso = false;
+          //this.boton.setAttribute("disabled", "False");
+         // this.router.navigate(['candidatos-presidentes']); 
         }
         //console.log(document.getElementById("boton"))
         
-
+      
   			resolve(true);
   		});
   	});
   }
 
+  ngOnDestroy(){
+    this.subscription && this.subscription.unsubscribe();
+  }
 }
