@@ -44,6 +44,10 @@ export class ConfirmacionVotoPage implements OnInit {
   parlacenpartido: string;
   parlacenURL: string;
   parlacenidVoto: Int16Array;
+  dispositivo = {
+    DValue: '0',
+    Dnum: '1'
+  }
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -103,6 +107,37 @@ export class ConfirmacionVotoPage implements OnInit {
     });
   }
 
+  async ActualizarEstadoDispositivo() {    
+    let body = {
+      DValue: this.dispositivo.DValue,
+      Dnum: this.dispositivo.Dnum,
+      aksi: "actualizardispositivo"
+    }     
+
+    this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{ //Llamada del metodo postData en post-provider, recibe como parametros
+                                                                            //El cuerpo con los datos de la tabla a consultar y el nombre de 
+                                                                            //proses-api.php donde se realizan los queris.
+      var alertpesan = data.msg;
+      if (data.success) {
+        this.storage.set("session_storage", data.result);
+        //this.router.navigate(["/home"]); ///Navegacion hacia home una vez verificados los datos
+        const toast = await this.toastCtrl.create({
+          message: "Estado de dispositivo actualizado",
+          duration: 2000
+        });
+        toast.present();
+        console.log(data);
+      } else {
+        const toast = await this.toastCtrl.create({
+          message: alertpesan,
+          duration: 2000
+        });
+        toast.present();
+      }
+    });
+}
+
+
   async alertaConfirmar(){
     const alert = await this.alertController.create({
       header: 'Esta apunto de enviar su votos',
@@ -119,6 +154,7 @@ export class ConfirmacionVotoPage implements OnInit {
           text: 'Confirmar',
           handler : () => {
             this.enviarDatos();
+            this.ActualizarEstadoDispositivo();
           }
         }
       ]
