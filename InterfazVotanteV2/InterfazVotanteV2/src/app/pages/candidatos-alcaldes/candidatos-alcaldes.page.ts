@@ -27,6 +27,7 @@ export class CandidatosAlcaldesPage implements OnInit {
     this.infoservice.getAlcaldes().subscribe(res => {
       this.alcaldes = res;
       console.log("Cadena alcaldes", this.alcaldes);
+      this.id_selec = '-';
     });
   }
 
@@ -52,7 +53,13 @@ export class CandidatosAlcaldesPage implements OnInit {
   }
 
   async enviarDatos() {
-    this.router.navigate(['candidatos-listanacional/' + this.id_presidente + '/' + this.id_selec]); ///Navegacion hacia alcaldes prueba
+    var prueba = '-';
+    var index = prueba.localeCompare(this.id_selec);
+    if(index == -1){
+      this.router.navigate(['candidatos-listanacional/' + this.id_presidente + '/' + this.id_selec]); 
+    }else{
+      console.log('no funciona');
+    }
   }
 
 }

@@ -25,6 +25,7 @@ export class CandidatosParlacenPage implements OnInit {
     this.infoservice.getParlacens().subscribe(res => {
       this.parlacen = res;
       console.log("Cadena Parlacen", this.parlacen);
+      this.id_selec = '-';
     });
   }
 
@@ -45,7 +46,14 @@ export class CandidatosParlacenPage implements OnInit {
   }
 
   async enviarDatos() {
-    this.router.navigate(['confirmacion-voto/' + this.id_presidente + '/' + this.id_alcalde + '/' + this.id_lista+'/'+this.id_distrito+'/'+this.id_selec]); ///Navegacion hacia alcaldes prueba
+    var prueba = '-';
+    var index = prueba.localeCompare(this.id_selec);
+    //console.log(index);
+    if(index == -1){
+      this.router.navigate(['confirmacion-voto/' + this.id_presidente + '/' + this.id_alcalde + '/' + this.id_lista+'/'+this.id_distrito+'/'+this.id_selec]); ///Navegacion hacia alcaldes prueba
+    }else{
+      console.log('no funciona');
+    }
   }
 
 }

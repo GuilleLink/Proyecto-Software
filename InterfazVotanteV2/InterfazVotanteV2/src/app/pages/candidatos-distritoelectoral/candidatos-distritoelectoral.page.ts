@@ -29,6 +29,7 @@ export class CandidatosDistritoelectoralPage implements OnInit {
       //console.log("Candidatos", res);
       this.distritos = res;
       console.log("Cadena Distritos", this.distritos);
+      this.id_selec = '-';
     });
   }
 
@@ -47,7 +48,14 @@ export class CandidatosDistritoelectoralPage implements OnInit {
   }
 
   async enviarDatos() {
-    this.router.navigate(['candidatos-parlacen/' + this.id_presidente + '/' + this.id_alcalde + '/' + this.id_lista+'/'+this.id_selec]); ///Navegacion hacia alcaldes prueba
+    var prueba = '-';
+    var index = prueba.localeCompare(this.id_selec);
+    //console.log(index);
+    if(index == -1){
+      this.router.navigate(['candidatos-parlacen/' + this.id_presidente + '/' + this.id_alcalde + '/' + this.id_lista+'/'+this.id_selec]); ///Navegacion hacia alcaldes prueba
+    }else{
+      console.log('no funciona');
+    }
   }
 
 

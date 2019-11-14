@@ -88,7 +88,7 @@ export class CandidatosPresidentesPage implements OnInit {
   async enviarDatos() {
     var prueba = '-';
     var index = prueba.localeCompare(this.id_selec);
-    console.log(index);
+    //console.log(index);
     if(index == -1){
       this.router.navigate(['candidatos-alcaldes/' + this.id_selec]);
     }else{

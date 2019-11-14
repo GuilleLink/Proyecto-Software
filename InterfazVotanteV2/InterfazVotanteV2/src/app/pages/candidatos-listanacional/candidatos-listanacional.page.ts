@@ -25,6 +25,7 @@ export class CandidatosListanacionalPage implements OnInit {
       //console.log("Candidatos", res);
       this.diputados = res;
       console.log("Cadena Diputados", this.diputados);
+      this.id_selec = '-';
     });
   }
 
@@ -44,7 +45,14 @@ export class CandidatosListanacionalPage implements OnInit {
   }
 
   async enviarDatos() {
-    this.router.navigate(['candidatos-distritoelectoral/' + this.id_presidente + '/' + this.id_alcalde + '/' + this.id_selec]); ///Navegacion hacia alcaldes prueba
+    var prueba = '-';
+    var index = prueba.localeCompare(this.id_selec);
+    //console.log(index);
+    if(index == -1){
+      this.router.navigate(['candidatos-distritoelectoral/' + this.id_presidente + '/' + this.id_alcalde + '/' + this.id_selec]);
+    }else{
+      console.log('no funciona');
+    } 
   }
 
 }
