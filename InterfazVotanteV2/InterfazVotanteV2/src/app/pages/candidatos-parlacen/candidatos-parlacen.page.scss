@@ -1,0 +1,15 @@
+.candidatos{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 35px;
+    margin-right: 35px;
+}
+.cards{
+    height: 262px;
+    width: 174px;
+    margin-bottom: 10px;
+}
+
+.redBg{
+    background-color: red;
+}
