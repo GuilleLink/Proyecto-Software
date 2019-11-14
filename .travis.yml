@@ -14,7 +14,7 @@ cache: bundler
     - "node_modules"
 jobs:
   include:
-    file:
-        - "./InterfazVotanteV2/InterfazVotanteV2/src"
-      script:
-        - npm run test
+    before_script:
+      - cd ./InterfazVotanteV2/InterfazVotanteV2
+    script:
+      - npm run test
