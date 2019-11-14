@@ -4,6 +4,7 @@ import { AlertController, ActionSheetController } from '@ionic/angular';
 import { PostProvider } from "../../providers/post-provider";
 import { ToastController } from "@ionic/angular";
 import { Storage } from "@ionic/Storage";
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -12,13 +13,18 @@ import { Storage } from "@ionic/Storage";
 })
 
 export class HomePage {
+  status: number;
   DValue: string;
   Dnum: string;
+  elemento: any;
+  Nombre: string;
+  anggota: any;
 
   D1Value =  false;
   D2Value = false;
   D3Value = false;
   D4Value = false;
+  subscription : Subscription;
 
   dispositivo = {
     DValue: '0',
@@ -38,7 +44,18 @@ export class HomePage {
 
   ngOnInit() {
     // this.argument = this.activatedRoute.snapshot.paramMap.get('id');
+    //this.Comprobar();
     this.emailUser = this.ActivatedRoute.snapshot.paramMap.get('id');
+    const source = interval(1000);
+    this.subscription = source.subscribe(val => this.Comprobar());
+  }
+  ionViewWillEnter(){
+    
+    this.storage.get('session_storage').then((res)=>{
+      this.anggota = res;
+      this.Nombre = this.anggota.Nombre;
+      console.log(res);
+    });
   }
 
   async ActualizarEstadoDispositivo() {    
@@ -47,7 +64,6 @@ export class HomePage {
       Dnum: this.dispositivo.Dnum,
       aksi: "actualizardispositivo"
     }     
-
     this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{ //Llamada del metodo postData en post-provider, recibe como parametros
                                                                             //El cuerpo con los datos de la tabla a consultar y el nombre de 
                                                                             //proses-api.php donde se realizan los queris.
@@ -60,7 +76,8 @@ export class HomePage {
           duration: 2000
         });
         toast.present();
-        console.log(data);
+        ////console.log("hehe de madruga")
+        //////console.log(data.result);
       } else {
         const toast = await this.toastCtrl.create({
           message: alertpesan,
@@ -80,7 +97,7 @@ export class HomePage {
           text: 'Cancel',
           role: 'cancel',
           handler: () => {
-            console.log('No quiso el #1');//Acá podes editar
+            ////console.log('No quiso el #1');//Acá podes editar
             this.D1Value = false;
             this.dispositivo.DValue = '0';
             this.dispositivo.Dnum = '1';
@@ -91,7 +108,7 @@ export class HomePage {
           text: 'Aceptar',
           cssClass: 'Secondary',
           handler: () => {
-            console.log('Acción si Presionio el dispositivo No1');
+            //console.log('Acción si Presionio el dispositivo No1');
             this.dispositivo.DValue = '1';
             this.dispositivo.Dnum = '1';
             this.ActualizarEstadoDispositivo()
@@ -102,11 +119,13 @@ export class HomePage {
 
     if (this.D1Value == true) {
       await alertD1.present();
+      //console.log("cambio")
     }
     else if (this.D1Value == false) {    
       this.dispositivo.DValue = '0';
       this.dispositivo.Dnum = '1';
       this.ActualizarEstadoDispositivo()
+      //console.log("cambio2")
     }
   }
 
@@ -119,7 +138,7 @@ export class HomePage {
           text: 'Cancel',
           role: 'cancel',
           handler: () => {
-            console.log('No quiso el #2');
+            //console.log('No quiso el #2');
             this.D2Value = false;            
           }
         },
@@ -127,7 +146,7 @@ export class HomePage {
           text: 'Aceptar',
           cssClass: 'Secondary',
           handler: () => {
-            console.log('Acción si Presionio el dispositivo No2');
+            //console.log('Acción si Presionio el dispositivo No2');
             this.dispositivo.DValue = '1';
             this.dispositivo.Dnum = '2';
             this.ActualizarEstadoDispositivo()
@@ -155,7 +174,7 @@ export class HomePage {
           text: 'Cancel',
           role: 'cancel',
           handler: () => {
-            console.log('No quiso el #3');
+            //console.log('No quiso el #3');
             this.D3Value = false;
             this.dispositivo.DValue = '0';
             this.dispositivo.Dnum = '3';
@@ -166,7 +185,7 @@ export class HomePage {
           text: 'Aceptar',
           cssClass: 'Secondary',
           handler: () => {
-            console.log('Acción si Presionio el dispositivo No3');
+            //console.log('Acción si Presionio el dispositivo No3');
             this.dispositivo.DValue = '1';
             this.dispositivo.Dnum = '3';
             this.ActualizarEstadoDispositivo()
@@ -194,7 +213,7 @@ export class HomePage {
           text: 'Cancel',
           role: 'cancel',
           handler: () => {
-            console.log('No quiso el #4');
+            //console.log('No quiso el #4');
             this.D4Value = false;
             this.dispositivo.DValue = '0';
             this.dispositivo.Dnum = '4';
@@ -205,7 +224,7 @@ export class HomePage {
           text: 'Aceptar',
           cssClass: 'Secondary',
           handler: () => {
-            console.log('Acción si Presionio el dispositivo No4');
+            //console.log('Acción si Presionio el dispositivo No4');
             this.dispositivo.DValue = '1';
             this.dispositivo.Dnum = '4';
             this.ActualizarEstadoDispositivo()
@@ -222,5 +241,54 @@ export class HomePage {
       this.dispositivo.Dnum = '4';
       this.ActualizarEstadoDispositivo()
     }
+  }
+  Comprobar(){
+    
+    return new Promise(resolve => {
+  		let body = {
+  			aksi : 'StatusDispositivo'
+  		};
+  		this.postPvdr.postData(body, 'proses-api.php').subscribe(data => {
+  			
+        // this.boton = document.getElementById("inicio");
+        this.status = data.result[0].StatusDispositivo;
+        if (this.status == 1) {
+          //console.log("se debe de encender")
+          //this.coso = true;
+          //this.dispositivo.DValue = '0';
+          //this.dispositivo.Dnum = '1';
+          //this.D1Value = true;
+
+          //console.log('desactivado')
+          //this.presentAlertD1()
+          this.elemento = document.getElementById("toggle1");
+          this.elemento.setAttribute("class", "ng-valid ion-color ion-color-primary ios in-item interactive hydrated ng-dirty ng-touched toggle-checked ion-valid ion-dirty ion-touched");
+          //console.log(this.elemento)
+        }
+        else{
+          //console.log("se debe de apagar")
+          this.elemento = document.getElementById("toggle1");
+          this.elemento.setAttribute("class", "ng-valid ion-color ion-color-primary ios in-item interactive hydrated ng-dirty ng-touched ion-valid ion-dirty ion-touched");
+          //this.dispositivo.DValue = '1';
+          //this.dispositivo.Dnum = '1';
+          //this.D1Value = false;
+          //this.coso = false;
+          //console.log('activado')
+        }
+  			resolve(true);
+  		});
+  	});
+  }
+  async prosesLogout(){
+    this.storage.clear();
+    this.router.navigate(['/login']);
+    const toast = await this.toastCtrl.create({
+        message: 'logout succesful',
+        duration: 3000
+      });
+    toast.present();
+  }
+  ngOnDestroy(){
+    this.subscription && this.subscription.unsubscribe();
   }
 }

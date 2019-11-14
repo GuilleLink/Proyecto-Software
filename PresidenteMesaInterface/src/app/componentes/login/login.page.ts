@@ -14,6 +14,10 @@ export class LoginPage implements core.OnInit {
 
   Nombre: string;
   password: string;
+  usuario = {
+    Nombre: '',
+    password: ''
+  };
 
   constructor(
     public router: Router,
@@ -25,13 +29,18 @@ export class LoginPage implements core.OnInit {
     
   ngOnInit() {
   }
+  onSubmitTemplate(){
+    console.log( this.usuario );
+  }
   async prosesLogin() {
-    if (this.Nombre != "" && this.password != "") {
+    if (this.usuario.Nombre != "" && this.usuario.password != "") {
       let body = {
-        Nombre: this.Nombre,
-        password: this.password,
+        Nombre: this.usuario.Nombre,
+        password: this.usuario.password,
         aksi: "loginP"
       };
+
+      
 
       this.postPvdr.postData(body, 'proses-api.php').subscribe(async data =>{ //Llamada del metodo postData en post-provider, recibe como parametros
                                                                               //El cuerpo con los datos de la tabla a consultar y el nombre de 
@@ -41,12 +50,12 @@ export class LoginPage implements core.OnInit {
           this.storage.set("session_storage", data.result);
           this.router.navigate(["/home"]); ///Navegacion hacia home una vez verificados los datos
           const toast = await this.toastCtrl.create({
-            message: "Login Succesfully.",
+            message: "Ha ingresado satisfactoriamente",
             duration: 2000
           });
           toast.present();
-          this.Nombre = "";
-          this.password = "";
+          this.usuario.Nombre = "";
+          this.usuario.password = "";
           console.log(data);
         } else {
           const toast = await this.toastCtrl.create({
