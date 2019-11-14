@@ -52,6 +52,7 @@ export class CandidatosPresidentesPage implements OnInit {
       this.candidatos = res;
       console.log("Cadena Candidatos", this.candidatos);
     });
+    this.id_selec = '-';
   }
 
   PullID(candidato, id_voto,id){
@@ -65,7 +66,7 @@ export class CandidatosPresidentesPage implements OnInit {
     var partido = elementoC.getAttribute("ng-reflect--card-title");
     //this.router.navigate(['candidatos-alcaldes',id]);
     this.id_selec = id;
-    console.log(this.id_selec)
+    console.log(this.id_selec);
 
     ///this.cont+=1;
     // console.log("el valor de cont es "+this.cont)
@@ -85,7 +86,14 @@ export class CandidatosPresidentesPage implements OnInit {
   
 
   async enviarDatos() {
-    this.router.navigate(['candidatos-alcaldes/' + this.id_selec]);
+    var prueba = '-';
+    var index = prueba.localeCompare(this.id_selec);
+    console.log(index);
+    if(index == -1){
+      this.router.navigate(['candidatos-alcaldes/' + this.id_selec]);
+    }else{
+      console.log('no funciona');
+    }
     // let body = {
     //   id_Voto: this.voto.id_Voto,
     //   id_centro: this.voto.id_centro,
